@@ -47,6 +47,8 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'factory_girl', '~> 4.8'
+  gem 'ffaker', '~> 2.6'
 end
 
 group :development do
