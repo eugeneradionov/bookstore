@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'home#index'
+
+  resources :books
+  # devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
+  resources :users
+  as :user do
+    get 'login', to: 'devise/sessions#new'
+    delete 'logout', to: 'devise/sessions#destroy'
+    get 'sign_up', to: 'devise/registrations#new'
+  end
 end

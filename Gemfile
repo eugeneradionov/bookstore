@@ -33,9 +33,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'devise', '~> 4.3'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'haml', '~> 5.0', '>= 5.0.1'
 gem 'sass', '~> 3.5', '>= 3.5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.2.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,6 +50,8 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'factory_girl', '~> 4.8'
+  gem 'ffaker', '~> 2.6'
 end
 
 group :development do
@@ -56,6 +61,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'html2haml', '~> 2.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
