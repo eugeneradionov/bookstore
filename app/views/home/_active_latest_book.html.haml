@@ -1,0 +1,12 @@
+.item.active
+  .row
+    .col-sm-5
+      .general-img-wrap
+        %img.img-shadow.general-thumbnail-img{src: @first_book.image_url, alt: 'Some amazing @first_book'}
+    .col-sm-7
+      .mb-60
+        %h1= @first_book.title
+        %p.lead= first_sentence(@first_book)
+        %p.lead.small= book_authors(@first_book)
+        .general-align
+          %button.btn.btn-primary Buy Now
