@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727120807) do
+ActiveRecord::Schema.define(version: 20170727151728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170727120807) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors_books", force: :cascade do |t|
+  create_table "authors_books", id: false, force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "book_id"
     t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170727120807) do
     t.integer "publication_year"
     t.decimal "price"
     t.decimal "height"
-    t.decimal "weight"
+    t.decimal "width"
     t.decimal "depth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,6 +62,4 @@ ActiveRecord::Schema.define(version: 20170727120807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "authors_books", "authors"
-  add_foreign_key "authors_books", "books"
 end

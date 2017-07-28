@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'devise', '~> 4.3'

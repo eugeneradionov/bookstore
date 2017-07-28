@@ -48,13 +48,13 @@
                     %li
                       %a.collapse-link{href: "#"} My Orders
                 %li.divider{role: "separator"}
-                  %li
-                    = link_to 'Logout', logout_path, method: :delete
+                %li
+                  = link_to 'Log out', logout_path, method: :delete, class: 'collapse-link'
               - else
                 %li
-                  = link_to 'Log in', login_path
+                  = link_to 'Log in', login_path, class: 'collapse-link'
                 %li
-                  = link_to 'Sign up', sign_up_path
+                  = link_to 'Sign up', sign_up_path, class: 'collapse-link'
           .hidden-xs
             %ul.nav.navbar-nav
               %li
