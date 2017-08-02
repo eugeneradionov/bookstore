@@ -34,11 +34,18 @@
                 %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} Shop
                 %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
                   %li
-                    %a.collapse-link{href: "#"} Mobile development
+                    = link_to books_path(category: 'Mobile Development', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Mobile development
                   %li
-                    %a.collapse-link{href: "#"} Photo
+                    = link_to books_path(category: 'Photo', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Photo
                   %li
-                    %a.collapse-link{href: "#"} Web design
+                    = link_to books_path(category: 'Web Design', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Web Design
+                  %li
+                    = link_to books_path(category: 'Web Development', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Web Development
+
               - if user_signed_in?
                 %li
                   %a{type: "button", 'data-toggle': "collapse", href: "#account", 'aria-expanded': "false", 'aria-controls': "account"} My account
@@ -63,11 +70,17 @@
                 %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
                 %ul.dropdown-menu
                   %li
-                    %a{href: "#"} Mobile development
+                    = link_to books_path(category: 'Mobile Development', sort: params[:sort], direction: params[:direction]) do
+                      Mobile development
                   %li
-                    %a{href: "#"} Photo
+                    = link_to books_path(category: 'Photo', sort: params[:sort], direction: params[:direction]) do
+                      Photo
                   %li
-                    %a{href: "#"} Web design
+                    = link_to books_path(category: 'Web Design', sort: params[:sort], direction: params[:direction]) do
+                      Web Design
+                  %li
+                    = link_to books_path(category: 'Web Development', sort: params[:sort], direction: params[:direction]) do
+                      Web Development
 
               - if user_signed_in?
                 %li.dropdown
@@ -96,7 +109,7 @@
               %li
                 = link_to 'Home', root_path, class: 'nav-link'
               %li
-                %a.nav-link{href: "#"} Shop
+                = link_to 'Shop', books_path, class: 'nav-link'
               %li
                 %a.nav-link{href: "#"} Orders
               %li
