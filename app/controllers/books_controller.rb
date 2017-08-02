@@ -4,7 +4,10 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.order(created_at: :desc).page(params[:page])
+    @books = filter_by_category
+    @books = sort_by_criteria_and_direction
+
+    @categories_and_count = categories_and_count
 
     respond_to do |format|
       format.html { @books }
@@ -67,15 +70,42 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def book_params
-      params.require(:book).permit(:title, :description, :publication_year,
-                                   :price, :height, :weight, :depth,
-                                   author_ids: [])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def book_params
+    params.require(:book).permit(:title, :description, :publication_year,
+                                 :price, :height, :weight, :depth, :sort,
+                                 :direction, author_ids: [])
+  end
+
+  def categories_and_count
+    sql = 'SELECT c.name, count(b.id)
+    FROM books as b
+    INNER JOIN books_categories as bc
+    ON b.id = bc.book_id
+    INNER JOIN categories as c
+    ON c.id = bc.category_id
+    GROUP BY c.id'
+    ActiveRecord::Base.connection.execute(sql)
+  end
+
+  def sort_by_criteria_and_direction
+    sort = params[:sort] || :created_at
+    direction = params[:direction] || :asc
+    begin
+      @books.order("#{sort}" => "#{direction}").page(params[:page])
+    rescue NoMethodError
+      Book.order("#{sort}" => "#{direction}").page(params[:page])
     end
+  end
+
+  def filter_by_category
+    category = params[:category]
+    Book.joins(:categories).where('categories.name LIKE (?)', category) if category
+  end
 end

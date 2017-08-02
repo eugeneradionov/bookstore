@@ -2,14 +2,13 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :books
-  # devise_for :users
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
   resources :users
-
   as :user do
-    get 'login', to: 'devise/sessions#new'
-    delete 'logout', to: 'devise/sessions#destroy'
-    get 'sign_up', to: 'devise/registrations#new'
+    get 'login', to: 'users/sessions#new'
+    delete 'logout', to: 'users/sessions#destroy'
+    get 'sign_up', to: 'users/registrations#new'
+    post 'sign_up', to: 'users/registrations#create'
   end
 
   get 'catalog', to: 'books#index'

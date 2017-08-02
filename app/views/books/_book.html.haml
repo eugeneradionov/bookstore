@@ -4,13 +4,13 @@
       %img.img-shadow.general-thumbnail-img{src: book.image_url, alt:'Some cool book'}
       .thumb-hover
         .general-thumb-link-wrap
-          %a.thumb-hover-link{href: '#'}
+          = link_to book, class: 'thumb-hover-link' do
             %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'}
           %a.thumb-hover-link{href: '#'}
             %i.fa.fa-shopping-cart.thumb-icon
   .general-thumb-info
     .space-between
       %p.title= book.title
-      %p.font-16.in-gold-500 €#{ book.price }
+      %p.font-16.in-gold-500= book_price(book)
     %span.divider-sm
     %p.lead.small= book.authors.map(&:name).join(', ')

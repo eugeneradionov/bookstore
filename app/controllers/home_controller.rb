@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  helper_method :book_authors, :first_sentence
+  helper_method :first_sentence
 
   def index
     @books = Book.order(created_at: :desc).limit(3)
@@ -9,12 +9,8 @@ class HomeController < ApplicationController
 
   private
 
-  def book_authors(book)
-    book.authors.map(&:name).join(', ')
-  end
-
   def first_sentence(book)
-    book.description[/^(.*?)[.?!]\s/]
+    book.description[/^(.*?)[.?!]/]
   end
 
 end
