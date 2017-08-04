@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801153730) do
+ActiveRecord::Schema.define(version: 20170804084214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170801153730) do
     t.decimal "depth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
+    t.text "cover_url"
   end
 
   create_table "books_categories", id: false, force: :cascade do |t|
@@ -49,8 +49,21 @@ ActiveRecord::Schema.define(version: 20170801153730) do
     t.index ["category_id"], name: "index_books_categories_on_category_id"
   end
 
+  create_table "books_image_urls", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "image_url_id"
+    t.index ["book_id"], name: "index_books_image_urls_on_book_id"
+    t.index ["image_url_id"], name: "index_books_image_urls_on_image_url_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "image_urls", force: :cascade do |t|
+    t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
