@@ -7,10 +7,10 @@
   %li
     = link_to 'Popular first', books_path(sort: :popular, category: params[:category])
   %li
-    = link_to 'Price: Low to high', books_path(sort: :price, category: params[:category])
+    = link_to 'Price: Low to high', books_path(sort: :price, direction: :asc, category: params[:category])
   %li
-    = link_to 'Price: High to low', books_path(sort: :price, direction: :desc, category: params[:category])
+    = link_to 'Price: High to low', books_path(sort: :price, category: params[:category])
   %li
-    = link_to 'Title: A - Z', books_path(sort: :title, category: params[:category])
+    = link_to 'Title: A - Z', books_path(sort: :title, direction: :asc, category: params[:category])
   %li
-    = link_to 'Title: Z - A', books_path(sort: :title, direction: :desc, category: params[:category])
+    = link_to 'Title: Z - A', books_path(sort: :title, category: params[:category])

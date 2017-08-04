@@ -1,0 +1,10 @@
+.product-gallery
+  .mb-20
+    %img.img-responsive{src: @book.cover_url}
+  .images.clearfix
+    %a.img-link{href: '#'}
+      %img{src: book_gallery_image(0)}
+    %a.img-link{href: '#'}
+      %img{src: book_gallery_image(1)}
+    %a.img-link{href: '#'}
+      %img{src: book_gallery_image(2)}

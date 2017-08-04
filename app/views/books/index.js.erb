@@ -1,6 +1,6 @@
 <% if params[:page] %>
   books = "<%= j(render @books) %>"
-  $("#view-more-books-container").before("<div class='row'><%= j(render @books) %></div>")
+  $("#view-more-books-container").before("<%= j(render 'books') %>")
 <% end %>
 
 <% if @books.last_page? %>

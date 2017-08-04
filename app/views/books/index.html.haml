@@ -15,9 +15,6 @@
       = render 'dropdown_sort'
 
   .mb-120#books-container
-    - @books.in_groups_of(4, false) do |group|
-      .row
-        - group.each do |book|
-          = render book
+    = render 'books'
     .text-center#view-more-books-container
       = link_to_next_page @books, 'View More', id: 'view-more-books', class: 'btn btn-primary', remote: true

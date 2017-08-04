@@ -96,11 +96,13 @@ class BooksController < ApplicationController
 
   def sort_by_criteria_and_direction
     sort = params[:sort] || :created_at
-    direction = params[:direction] || :asc
+    direction = params[:direction] || :desc
+    page = (params[:page] || '1').to_i
+
     begin
-      @books.order("#{sort}" => "#{direction}").page(params[:page])
+      @books.order("#{sort}" => "#{direction}").page(page)
     rescue NoMethodError
-      Book.order("#{sort}" => "#{direction}").page(params[:page])
+      Book.order("#{sort}" => "#{direction}").page(page)
     end
   end
 
