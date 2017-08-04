@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+#
 Category.create([{name: 'Mobile Development'}, {name: 'Web Design'}, {name: 'Photo'}, {name: 'Web Development'}])
 
 description = "Android is the most popular OS in the world. There are millions of devices accessing tens of thousands of applications. It is many people's entry point into the world of technology; it is an operating system for everyone. Despite this, the entry-fee to actually make Android applications is usually a computer science degree, or five years’ worth of Java experience.
@@ -14,20 +14,24 @@ After this crash-course, we’ll dive deeper into Android programming and you’
 By the end of this book, you’ll be ready to start building your own custom applications in Android and Java."
 book = Book.new(title: 'Android Programming for Beginners',
             publication_year: 2015, price: 35.99, description: description,
-            height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+            height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'John Horton')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Packed with trade secrets, this second edition is your one-stop solution to creating websites that will provide the best experience for your users. We cover six popular, real-world examples, where each project teaches you about the various functionalities of Bootstrap 4 and their implementation.
 The book starts off by getting you up and running with the new features of Bootstrap 4 before gradually moving on to customizing your blog with Bootstrap and SASS, building a portfolio site, and turning it into a WordPress theme. In the process, you will learn to recompile Bootstrap files using SASS, design a user interface, and integrate JavaScript plugins. Towards the end of the book, you will also be introduced to integrating Bootstrap 4 with popular application frameworks such as Angular 2, Ruby on Rails, and React.'
 book = Book.new(title: 'Bootstrap 4 Site Blueprints',
             publication_year: 2016, price: 34.99, description: description,
-            height: 6.4, width: 1.0, depth: 4.6, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+            height: 6.4, width: 1.0, depth: 4.6)
 book.authors << [Author.find_or_create_by(name: 'Bass Jobsen'),
                  Author.find_or_create_by(name: 'David Cochran'),
                  Author.find_or_create_by(name: 'Ian Whitley')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Node.js is the most popular framework to create server-side applications today. Be it web, desktop, or mobile, Node.js comes to your rescue to create stunning real-time applications. Node.js 6.x Blueprints will teach you to build these types of projects in an easy-to-understand manner.
@@ -36,9 +40,11 @@ Once you’re warmed up, we’ll move on to more complex projects such as a cons
 By the end of book, you will be comfortable working with Node.js applications and will know the best tools and frameworks to build highly scalable desktop and cloud applications.'
 book = Book.new(title: 'Node.js 6.x Blueprints',
                 publication_year: 2016, price: 34.99, description: description,
-                height: 6.4, width: 1.0, depth: 4.6, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 1.0, depth: 4.6)
 book.authors << [Author.find_or_create_by(name: 'Fernando Monteiro')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Laravel is a prominent member of a new generation of web frameworks. It is one of the most popular PHP frameworks and is also free and an open source. Laravel 5 is a substantial upgrade with a lot of new toys, at the same time retaining the features that made Laravel wildly successful. It comes with plenty of architectural as well as design-based changes.
@@ -46,9 +52,11 @@ The book is a blend of numerous recipes that will give you all the necessary tip
 Towards the end of the book, you will understand a number of add-ons and new features essential to finalize your application to make it ready for subscriptions. You will be empowered to get your application out to the world."
 book = Book.new(title: 'Laravel 5.x Cookbook',
                 publication_year: 2016, price: 34.99, description: description,
-                height: 6.4, width: 1.0, depth: 4.6, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 1.0, depth: 4.6)
 book.authors << [Author.find_or_create_by(name: 'Alfred Nutile')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Responsive web design (RWD) is a web design approach aimed at crafting sites to provide an optimal viewing and interaction experience—providing easy reading and navigation with minimum resizing, panning, and scrolling—and all of this across a wide range of devices from desktop computer monitors to mobile phones. Responsive web design is becoming more important as the amount of mobile traffic now accounts for more than half of the Internet’s total traffic.
@@ -56,11 +64,13 @@ This book will give you in depth knowledge about the basics of responsive web de
 You'll begin by getting an understanding of what RWD is and its significance to the modern web. Building on the basics, you'll learn about layouts and media queries. Following this, we’ll dive into creating layouts using grid based templates. We’ll also cover the important topic of performance management, and discover how to tackle cross-browser challenges."
 book = Book.new(title: 'Responsive Web Design with HTML5 and CSS3 Essentials',
                 publication_year: 2016, price: 19.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Gaurav Gupta'),
                  Author.find_or_create_by(name: 'Alex Libby'),
                  Author.find_or_create_by(name: 'Asoj Talesra')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'React has taken the web development world by storm, and it is only natural that the unique architecture and its ecosystem of third-party support be applied to native application development. This book will take you through the basics of React Native development all the way through to some more advanced components.
@@ -68,10 +78,12 @@ This book covers topics in React Native ranging from adding basic UI components 
 You will then learn about different strategies for working with data, including leveraging the popular Redux library and optimizing the performance of the application. Then, you will step further into exposing native device functionality. Finally, we will discuss how to put your application into production and maintain its reliability.'
 book = Book.new(title: 'React Native Cookbook',
                 publication_year: 2016, price: 34.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Crysfel Villa'),
                  Author.find_or_create_by(name: 'Stan Bershadskiy')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Vue.js is an open source JavaScript library for building modern, interactive web applications. With a rapidly growing community and a strong ecosystem, Vue.js makes developing complex single page applications a breeze. Its component-based approach, intuitive API, blazing fast core, and compact size make Vue.js a great solution to craft your next front-end application.
@@ -80,9 +92,11 @@ After that, we delve into integrating Webpack and Babel to enhance your developm
 This book will provide you with the best practices as determined by the Vue.js community.'
 book = Book.new(title: 'Vue.js 2 Cookbook',
                 publication_year: 2017, price: 34.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Andrea Passaglia')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Angular 2 will help you build faster, more efficient, and more flexible cross-platform applications. Angular 2 is known for taking the pain out of JavaScript development, and enabling more organized, readable, and testable code.
@@ -90,10 +104,12 @@ This book builds three apps with varying degrees of complexity. It starts with a
 In addition to this, you will learn about testability and the framework constructs Angular provides to effectively test your app. The book concludes by providing you with practical advice and useful tips that will come in handy as you build more and more apps with Angular.'
 book = Book.new(title: 'Angular 2 By Example',
                 publication_year: 2016, price: 31.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Chandermani Arora'),
                  Author.find_or_create_by(name: 'Kevin Hennessy')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "If you are a web developer and want to create web applications that look good, are efficient, have rich user interfaces, and integrate seamlessly with any backend using AJAX, then this book is the ideal match for you. We’ll show you how you can integrate jQuery 3.0 into your web pages, avoid complex JavaScript code, create brilliant animation effects for your web applications, and create a flawless app.
@@ -102,11 +118,13 @@ Moving on, we’ll learn how the ECMAScript 6 features affect your web developme
 By the end of the book, you will be able to successfully create a fully featured and efficient single page web application and leverage all the new features of jQuery 3.0 effectively."
 book = Book.new(title: 'Learning jQuery 3 - Fifth Edition',
                 publication_year: 2017, price: 30.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Adam Boduch'),
                  Author.find_or_create_by(name: 'Jonathan Chaffer'),
                  Author.find_or_create_by(name: 'Karl Swedberg')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Two of the most popular frontend frameworks, Angular and Bootstrap, have undergone a major overhaul to embrace emerging web technologies so that developers can build cutting-edge web applications.
@@ -115,10 +133,12 @@ Webpack will be your buddy to wrap up your project. Then, after throwing in some
 Once you're done with this book, you'll not only have a lovely little e-commerce application running, but you'll also take with you the confidence to innovate and build your own applications with ease."
 book = Book.new(title: 'Web Development with Bootstrap 4 and Angular 2 - Second Edition',
                 publication_year: 2016, price: 34.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Sergey Akopkokhyants'),
                  Author.find_or_create_by(name: 'Stephen Radford')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'The Android OS has the largest installation base of any operating system in the world; there has never been a better time to learn Android development to write your own applications, or to make your own contributions to the open source community!
@@ -127,19 +147,23 @@ Starting with the basics of Android development, we move on to more advanced con
 Finally, we’ll take a look at several online services designed especially for Android development. Take your application big-time with full Internet web services without having to become a server admin by leveraging the power of Backend as a Service (BaaS) providers.'
 book = Book.new(title: 'Android Application Development Cookbook - Second Edition',
                 publication_year: 2016, price: 32.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Rick Boyer'),
                  Author.find_or_create_by(name: 'Kyle Mew'),
                  Author.find_or_create_by(name: 'Asoj Talesra')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Updated for Xcode 8, Swift 3, and iOS 10, iOS Programming: The Big Nerd Ranch Guide leads you through the essential concepts, tools, and techniques for developing iOS applications. After completing this book, you will have the know-how and the confidence you need to tackle iOS projects of your own. Based on Big Nerd Ranch's popular iOS training and its well-tested materials and methodology, this bestselling guide teaches iOS concepts and coding in tandem. The result is instruction that is relevant and useful.
  Throughout the book, the authors explain what's important and share their insights into the larger context of the iOS platform. You get a real understanding of how iOS development works, the many features that are available, and when and where to apply what you've learned."
 book = Book.new(title: 'Swift Programming: The Big Nerd Ranch Guide 2nd Edition',
                 publication_year: 2016, price: 32.99, description: description,
-                height: 6.4, width: 0.9, depth: 5.0, image_url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')
+                height: 6.4, width: 0.9, depth: 5.0)
 book.authors << [Author.find_or_create_by(name: 'Matt Mathias'),
                  Author.find_or_create_by(name: 'John Gallagher')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
+# book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
+book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
