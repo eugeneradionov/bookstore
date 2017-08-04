@@ -3,6 +3,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+    redirect_to root_path if user_signed_in?
     super
   end
 
