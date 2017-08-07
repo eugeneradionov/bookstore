@@ -13,4 +13,8 @@ module ApplicationHelper
   def book_authors(book)
     book.authors.map(&:name).join(', ')
   end
+
+  def number_to_euro(amount)
+    '€%.2f' % amount
+  end
 end

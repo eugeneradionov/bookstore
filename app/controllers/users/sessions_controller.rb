@@ -10,6 +10,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
+    current_user.cart = Cart.find(session[:cart_id])
   end
 
   # DELETE /resource/sign_out

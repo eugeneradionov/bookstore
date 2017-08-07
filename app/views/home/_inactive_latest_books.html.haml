@@ -10,4 +10,4 @@
           %p.lead= first_sentence(book)
           %p.lead.small= book_authors(book)
           .general-align
-            %button.btn.btn-primary Buy Now
+            = button_to 'Buy Now', order_items_path(book_id: book), class: 'btn btn-primary', remote: true

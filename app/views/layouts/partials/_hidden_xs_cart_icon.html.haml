@@ -1,0 +1,7 @@
+= link_to cart_path, class: 'shop-link pull-right hidden-xs' do
+  -if @cart.cart_size.zero?
+    %span.shop-icon.bc-transparent
+      %span.shop-quantity &nbsp;&nbsp;
+  - else
+    %span.shop-icon
+      %span.shop-quantity= @cart.cart_size
