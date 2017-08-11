@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.cart = Cart.find(session[:cart_id])
+    current_user.cart = Cart.find(session[:cart_id]) if session[:cart_id]
   end
 
   # GET /resource/edit
