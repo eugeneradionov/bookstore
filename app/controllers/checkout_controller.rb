@@ -13,6 +13,8 @@ class CheckoutController < ApplicationController
     set_session_current_step(current_step)
     @checkout.current_step = current_step
 
+    set_shipping_and_billing_address
+
     if session[:order_id]
       @order = Order.find(session[:order_id])
       @user = User.find(@order.user_id)
@@ -27,6 +29,8 @@ class CheckoutController < ApplicationController
     @checkout.current_step = session[:current_step]
     @checkout.use_billing_address = session[:checkout_params]['use_billing_address']
     set_shipping_address_as_billing if @checkout.address_step? && @checkout.use_billing_address?
+
+    set_shipping_and_billing_address
 
     if params[:back_button]
       @checkout.previous_step
@@ -45,7 +49,7 @@ class CheckoutController < ApplicationController
 
     if @checkout.saved
       set_order_items
-      set_cart
+      update_cart
       set_complete_session_params
       set_session_current_step('complete')
 
@@ -75,6 +79,17 @@ class CheckoutController < ApplicationController
 
   private
 
+  def set_shipping_and_billing_address
+    user_info = current_user.user_info
+    begin
+      @shipping_a = ShippingAddress.find(user_info.shipping_address_id)
+      @billing_a = BillingAddress.find(user_info.billing_address_id)
+    rescue NoMethodError
+      @shipping_a = ShippingAddress.new
+      @billing_a = BillingAddress.new
+    end
+  end
+
   def initialize_checkout
     @checkout = Checkout.new(session[:checkout_params])
   end
@@ -98,7 +113,7 @@ class CheckoutController < ApplicationController
     @order.order_items = @cart.order_items
   end
 
-  def set_cart
+  def update_cart
     order_items_ids = "(#{@cart.order_items.ids.join(',')})"
     @cart.order_items.where("id IN #{order_items_ids}").update_all(cart_id: nil)
     @cart.update(discount: nil)

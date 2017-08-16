@@ -2,29 +2,29 @@
   .col-sm-3
     %h3.general-subtitle Shipping Address
     %p.general-address
-      = shipping_full_name
+      = checkout_shipping_full_name
       = link_to 'edit', checkout_path(current_step: 'address'), class: 'general-edit'
       %br
-      = shipping_address
+      = checkout_shipping_address
       %br
-      = shipping_city_zip
+      = checkout_shipping_city_zip
       %br
-      = shipping_country
+      = country_name(checkout_shipping_country)
       %br
-      = shipping_phone
+      = "Phone #{checkout_shipping_phone}"
   .col-sm-3
     %h3.general-subtitle Billing Address
     %p.general-address
-      = billing_full_name
+      = checkout_billing_full_name
       = link_to 'edit', checkout_path(current_step: 'address'), class: 'general-edit'
       %br
-      = billing_address
+      = checkout_billing_address
       %br
-      = billing_city_zip
+      = checkout_billing_city_zip
       %br
-      = billing_country
+      = country_name(checkout_billing_country)
       %br
-      = billing_phone
+      = "Phone #{checkout_billing_phone}"
   .col-sm-3
     %h3.general-subtitle Shipments
     %p.general-address

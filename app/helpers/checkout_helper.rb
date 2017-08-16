@@ -19,44 +19,76 @@ module CheckoutHelper
     @shipping_address.phone
   end
 
-  def shipping_full_name
+  def checkout_shipping_full_name
     "#{session[:checkout_params]['shipping_first_name']} #{session[:checkout_params]['shipping_last_name']}"
   end
 
-  def shipping_address
-    session[:checkout_params]['shipping_address']
+  def checkout_shipping_first_name
+    session[:checkout_params]['shipping_first_name'] || @shipping_a.first_name
   end
 
-  def shipping_city_zip
+  def checkout_shipping_last_name
+    session[:checkout_params]['shipping_last_name'] || @shipping_a.last_name
+  end
+
+  def checkout_shipping_address
+    session[:checkout_params]['shipping_address'] || @shipping_a.address
+  end
+
+  def checkout_shipping_city_zip
     "#{session[:checkout_params]['shipping_city']} #{session[:checkout_params]['shipping_zip']}"
   end
 
-  def shipping_country
-    country_name(session[:checkout_params]['shipping_country'])
+  def checkout_shipping_city
+    session[:checkout_params]['shipping_city'] || @shipping_a.city
   end
 
-  def shipping_phone
-    "Phone #{session[:checkout_params]['shipping_phone']}"
+  def checkout_shipping_zip
+    session[:checkout_params]['shipping_zip'] || @shipping_a.zip
   end
 
-  def billing_full_name
+  def checkout_shipping_country
+    session[:checkout_params]['shipping_country'] || @shipping_a.country
+  end
+
+  def checkout_shipping_phone
+    session[:checkout_params]['shipping_phone'] || @shipping_a.phone
+  end
+
+  def checkout_billing_full_name
     "#{session[:checkout_params]['billing_first_name']} #{session[:checkout_params]['billing_last_name']}"
   end
 
-  def billing_address
-    session[:checkout_params]['billing_address']
+  def checkout_billing_first_name
+    session[:checkout_params]['billing_first_name'] || @billing_a.first_name
   end
 
-  def billing_city_zip
+  def checkout_billing_last_name
+    session[:checkout_params]['billing_last_name'] || @billing_a.last_name
+  end
+
+  def checkout_billing_address
+    session[:checkout_params]['billing_address'] || @billing_a.address
+  end
+
+  def checkout_billing_city_zip
     "#{session[:checkout_params]['billing_city']} #{session[:checkout_params]['billing_zip']}"
   end
 
-  def billing_country
-    country_name(session[:checkout_params]['billing_country'])
+  def checkout_billing_city
+    session[:checkout_params]['billing_city'] || @billing_a.city
   end
 
-  def billing_phone
-    "Phone #{session[:checkout_params]['billing_phone']}"
+  def checkout_billing_zip
+    session[:checkout_params]['billing_zip'] || @billing_a.zip
+  end
+
+  def checkout_billing_country
+    session[:checkout_params]['billing_country'] || @billing_a.country
+  end
+
+  def checkout_billing_phone
+    session[:checkout_params]['billing_phone'] || @billing_a.phone
   end
 
   def card_number
@@ -79,8 +111,6 @@ module CheckoutHelper
   def delivery_price(delivery)
     delivery.price.zero? ? 'Free' : number_to_euro(delivery.price)
   end
-
-  private
 
   def country_name(country_code)
     country = ISO3166::Country[country_code]

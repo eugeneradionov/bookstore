@@ -25,4 +25,8 @@ module ApplicationHelper
   def order_date(order)
     order.created_at.strftime('%B %d, %Y')
   end
+
+  def phone_pattern
+    '^\+\D?\d{3}\D?\d{2}\D?\d{3}(\D?\d{2}){2}$'
+  end
 end
