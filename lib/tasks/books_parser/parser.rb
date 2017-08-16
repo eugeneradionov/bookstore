@@ -37,6 +37,8 @@ class Parser
     # category = page.css('div#breadcrumbs')&.css('a')[-1]&.text
     category = 'Web Development'
     book.categories << [Category.find_by(name: category)]
+    category = 'Web Design'
+    book.categories << [Category.find_by(name: category)]
 
     # book.image_urls << [ImageUrl.create(url: page.css('#image img')&.attr('src').text.strip)]
     book.cover_url = page.css('#image img')&.attr('src').text.strip

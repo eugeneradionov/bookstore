@@ -1,0 +1,9 @@
+%main.container
+  = form_for @checkout, url: checkout_path do |f|
+    = render "checkout_#{@checkout.current_step}", f: f
+    .text-center
+      - unless @checkout.current_step == 'complete'
+        = f.submit('Place Order', name: 'place_order_button', class: 'btn btn-default mb-80') if @checkout.confirm_step?
+        = f.submit('Save and Continue', class: 'btn btn-default mb-80') unless @checkout.last_step?
+        = f.submit('Save and go to Confirm', name: 'back_to_confirm_button', class: 'btn btn-default mb-80') if params[:current_step]
+        = f.submit('Back', name: 'back_button', class: 'btn btn-default mb-80') unless @checkout.first_step?

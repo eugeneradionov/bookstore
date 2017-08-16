@@ -1,6 +1,5 @@
 = form_for(resource, html: {class: 'general-form'}, as: resource_name, url: session_path(resource_name)) do |f|
   .form-group.mb-30
-    -#= devise_error_messages!
     .color-red.text-center= flash[:alert]
     = f.label :email, class: 'control-label input-label'
     - if resource.errors[:email].empty?

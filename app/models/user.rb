@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_one :cart
+  has_one :user_info
+  has_many :orders
 
   validates :email, presence: true
   validates :email, uniqueness: true

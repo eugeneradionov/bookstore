@@ -18,6 +18,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @order_item = OrderItem.new
   end
 
   # GET /books/new

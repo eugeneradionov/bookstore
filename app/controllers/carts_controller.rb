@@ -19,8 +19,29 @@ class CartsController < ApplicationController
     end
   end
 
-  # DELETE /carts/1
-  # DELETE /carts/1.json
+  # POST cart/1
+  def update
+    coupon = Coupon.find_by(code: params[:cart][:discount])
+    if coupon
+      params[:cart][:discount] = (coupon.active ? coupon.discount : nil)
+      coupon.active = false
+      coupon.save
+    else
+      params[:cart][:discount] = nil
+    end
+
+    respond_to do |format|
+      if @cart.update(cart_params)
+        format.html { redirect_to cart_path, notice: 'Book was successfully updated.' }
+      else
+        format.html { redirect_to cart_path, notice: '' }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /cart/1
+  # DELETE /cart/1.json
   def destroy
     @cart.destroy
     respond_to do |format|
@@ -33,6 +54,6 @@ class CartsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def cart_params
-    params.fetch(:cart, {})
+    params.fetch(:cart, {}).permit(:discount)
   end
 end

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  helper_method :first_sentence
+  helper_method :book_first_sentence
 
   def index
     @books = Book.order(created_at: :desc).limit(3)
@@ -9,8 +9,7 @@ class HomeController < ApplicationController
 
   private
 
-  def first_sentence(book)
+  def book_first_sentence(book)
     book.description[/^(.*?)[.?!]/]
   end
-
 end

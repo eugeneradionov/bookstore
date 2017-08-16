@@ -167,3 +167,12 @@ book.categories << [Category.find_by(name: 'Mobile Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
 book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
+
+Delivery.create!(method: 'Delivery Next Day!', days_from: 3, days_to: 7, price: 5)
+Delivery.create!(method: 'Pick Up In-Store', days_from: 5, days_to: 20, price: 0)
+Delivery.create!(method: 'Expressit', days_from: 2, days_to: 3, price: 15)
+
+Coupon.create!(code: '1q2w3e', discount: 1.00)
+Coupon.create!(code: 'e3w2q1', discount: 10.00)
+Coupon.create!(code: 'q1w2e3', discount: 15.00)
+Coupon.create!(code: 'qwerty', discount: 5.00)

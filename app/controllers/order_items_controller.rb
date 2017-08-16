@@ -9,12 +9,14 @@ class OrderItemsController < ApplicationController
   # POST /order_items
   # POST /order_items.json
   def create
-    book = Book.find(params[:book_id])
-    @order_item = @cart.add_book(book.id)
+    # book = Book.find(params[:book_id])
+    book_id = params[:book_id]
+    quantity = params[:order_item] ? params[:order_item][:quantity] : 1
+    @order_item = @cart.add_book(book_id, quantity)
 
     respond_to do |format|
       if @order_item.save
-        format.html
+        format.html { redirect_to request.referrer }
         format.js
         format.json { render :show, status: :created, location: @order_item }
       else
@@ -43,6 +45,6 @@ class OrderItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_item_params
-    params.require(:order_item).permit(:book_id)
+    params.require(:order_item).permit(:book_id, :quantity)
   end
 end

@@ -21,11 +21,9 @@
         %span.font-16.in-gold-500= number_to_euro(order_item.book.price)
       %td
         .input-group
-          %a.input-link{href: '#'}
-            %i.fa.fa-minus.line-height-40
-          %input.form-control.quantity-input{type: 'number', value: order_item.quantity, min: 1}
-          %a.input-link{href: '#'}
-            %i.fa.fa-plus.line-height-40
+          %a#minus.input-link.fa.fa-minus.line-height-40
+          %input#quantity.form-control.quantity-input{type: 'number', value: order_item.quantity, min: 1}
+          %a#plus.input-link.fa.fa-plus.line-height-40
       %td
         %span.font-16.in-gold-500= number_to_euro(order_item.subtotal_price)
       %td

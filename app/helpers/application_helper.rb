@@ -17,4 +17,12 @@ module ApplicationHelper
   def number_to_euro(amount)
     '€%.2f' % amount
   end
+
+  def book_first_sentence(book)
+    book.description[/^(.*?)[.?!]/]
+  end
+
+  def order_date(order)
+    order.created_at.strftime('%B %d, %Y')
+  end
 end

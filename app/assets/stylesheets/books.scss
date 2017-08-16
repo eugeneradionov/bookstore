@@ -18,3 +18,11 @@ input::-webkit-inner-spin-button {
 .bold {
   font-weight: bold;
 }
+
+.input-link {
+  cursor: pointer;
+}
+
+.input-link:hover {
+  text-decoration: none;
+}
