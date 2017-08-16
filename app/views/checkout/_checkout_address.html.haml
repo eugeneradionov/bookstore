@@ -88,11 +88,11 @@
     - if @checkout.errors[:billing_phone].empty?
       .form-group
       = f.label :phone, class: 'control-label input-label'
-      = f.telephone_field :billing_phone, pattern: '^\+\D?\d{3}\D?\d{2}\D?\d{3}\D?\d{4}$', id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
+      = f.telephone_field :billing_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
     - else
       .form-group.has-error
         = f.label :phone, class: 'control-label input-label'
-        = f.telephone_field :billing_phone, pattern: '^\+\D?\d{3}\D?\d{2}\D?\d{3}\D?\d{4}$', id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
+        = f.telephone_field :billing_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
         %span.help-block= error_message_for(:billing_phone)
   .col-md-5.col-md-offset-1.mb-60
     .visible-xs.visible-sm
@@ -155,11 +155,11 @@
       - if @checkout.errors[:shipping_phone].empty?
         .form-group
         = f.label :phone, class: 'control-label input-label'
-        = f.telephone_field :shipping_phone, pattern: '^\+\D?\d{3}\D?\d{2}\D?\d{3}\D?\d{4}$', id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
+        = f.telephone_field :shipping_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
       - else
         .form-group.has-error
           = f.label :phone, class: 'control-label input-label'
-          = f.telephone_field :shipping_phone, pattern: '^\+\D?\d{3}\D?\d{2}\D?\d{3}\D?\d{4}$', id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
+          = f.telephone_field :shipping_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', placeholder: 'Example +355 66 123 4567'
           %span.help-block= error_message_for(:shipping_phone)
     .form-group.checkbox
       %label.checkbox-label
