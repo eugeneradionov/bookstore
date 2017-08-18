@@ -36,12 +36,13 @@
     .visible-xs.visible-sm
       %h3.general-subtitle Shipping Address
     - if (@checkout.use_billing_address == '0') || !@checkout.use_billing_address
-      = render 'checkout/shipping_address_form', f: f
+      #shipping_address_form
+        = render 'checkout/shipping_address_form', f: f
     .form-group.checkbox
-      %label.checkbox-label
-        = f.check_box :use_billing_address, class: 'checkbox-input', hidden: 'true'
+      %label#use_billing_address.checkbox-label
+        = f.check_box :use_billing_address, class: 'checkbox-input', hidden: true
         %span.checkbox-icon
           %i.fa.fa-check
-        %span.checkbox-text Use Billing Adress
+        %span.checkbox-text Use Billing Address
 .general-text-align
   = render 'order_summary'
