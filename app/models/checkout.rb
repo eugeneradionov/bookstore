@@ -69,10 +69,10 @@ class Checkout
                       billing_address_id: billing_a.id,
                       shipping_address_id: shipping_a.id,
                       delivery_id: delivery.id, payment_id: payment.id)
-        user_info = UserInfo.find_or_create_by!(user_id: user.id)
-        user_info.update!(shipping_address_id: shipping_a.id,
-                          billing_address_id: billing_a.id,
-                          payment_id: payment.id)
+        # user_info = UserInfo.find_or_create_by!(user_id: user.id)
+        # user_info.update!(shipping_address_id: shipping_a.id,
+        #                   billing_address_id: billing_a.id,
+        #                   payment_id: payment.id)
 
       end
 

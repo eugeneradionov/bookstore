@@ -27,7 +27,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
-    super
+    if params[:user][:confirm] == '1'
+      super
+    else
+      redirect_to :back
+    end
   end
 
   # GET /resource/cancel

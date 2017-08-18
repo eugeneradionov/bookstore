@@ -29,4 +29,8 @@ module ApplicationHelper
   def phone_pattern
     '^\+\D?\d{3}\D?\d{2}\D?\d{3}(\D?\d{2}){2}$'
   end
+
+  def error_message_for(object, field)
+    object.errors.full_messages_for(field).first
+  end
 end

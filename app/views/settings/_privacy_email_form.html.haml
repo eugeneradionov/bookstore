@@ -1,0 +1,14 @@
+.col-sm-5
+  %p.in-gold-500.font-18.mb-25 Email
+  = form_for @settings, class: 'general-form-md' do |f|
+    - if @settings.errors[:email].empty?
+      .form-group.mb-35
+        = f.label :email, 'Enter Email', class: 'control-label input-label'
+        = f.email_field :email, id: 'email', class: 'form-control', placeholder: 'Enter your email', value: settings_user_email
+    - else
+      .form-group.has-error.mb-35
+        = f.label :email, 'Enter Email', class: 'control-label input-label'
+        = f.email_field :email, id: 'email', class: 'form-control', placeholder: 'Enter your email', value: settings_user_email
+        %span.help-block= error_message_for(@settings, :email)
+    .general-text-align
+      = f.submit('Save', class: 'btn btn-default mb-35', name: 'save_email_button')

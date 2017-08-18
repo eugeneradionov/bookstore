@@ -6,8 +6,8 @@
     %title Bookstore
     %link{href: 'https://fonts.googleapis.com/css?family=Open+Sans', rel: 'stylesheet'}
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
     %header.navbar.navbar-default
       .container
@@ -51,7 +51,7 @@
                   %a{type: 'button', 'data-toggle': 'collapse', href: '#account', 'aria-expanded': 'false', 'aria-controls': 'account'} My account
                   %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': 'false'}
                     %li
-                      %a.collapse-link{href: '#'} Settings
+                      = link_to 'Settings', settings_path, class: 'collapse-link'
                     %li
                       %a.collapse-link{href: '#'} My Orders
                 %li.divider{role: 'separator'}
@@ -90,7 +90,7 @@
                   %a.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'} My account
                   %ul.dropdown-menu
                     %li
-                      %a{href: '#'} Settings
+                      = link_to 'Settings', settings_path
                     %li
                       %a{href: '#'} My Orders
                     %li.divider{role: 'separator'}

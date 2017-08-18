@@ -100,10 +100,6 @@ module CheckoutHelper
     session[:checkout_params]['mm_yy']
   end
 
-  def error_message_for(field)
-    @checkout.errors.full_messages_for(field).first
-  end
-
   def delivery_days(delivery)
     "#{delivery.days_from} to #{delivery.days_to} days"
   end

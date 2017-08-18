@@ -15,9 +15,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    cart_id = current_user.cart.id if current_user.cart
     super
-    session[:cart_id] = cart_id
   end
 
   # protected
