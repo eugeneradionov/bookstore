@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :redirect_to_login_unless_user_logged_in
+  before_action :authenticate_user!
 
   def edit
     @settings = Setting.new
@@ -37,10 +37,6 @@ class SettingsController < ApplicationController
                   :billing_first_name, :billing_last_name,
                   :billing_address, :billing_city, :billing_zip,
                   :billing_country, :billing_phone, :email)
-  end
-
-  def redirect_to_login_unless_user_logged_in
-    redirect_to login_path unless user_signed_in?
   end
 
   def set_shipping_and_billing_address
