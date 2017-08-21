@@ -176,3 +176,8 @@ Coupon.create!(code: '1q2w3e', discount: 1.00)
 Coupon.create!(code: 'e3w2q1', discount: 10.00)
 Coupon.create!(code: 'q1w2e3', discount: 15.00)
 Coupon.create!(code: 'qwerty', discount: 5.00)
+
+OrderStatus.create!(status: 'Waiting for Processing')
+OrderStatus.create!(status: 'In Progress')
+OrderStatus.create!(status: 'In Delivery')
+OrderStatus.create!(status: 'Delivered')

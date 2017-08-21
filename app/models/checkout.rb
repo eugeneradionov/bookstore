@@ -65,10 +65,13 @@ class Checkout
         payment = Payment.find_or_create_by(card_number: card_number, cvv: cvv,
                                             mm_yy: mm_yy)
 
+        order_status = OrderStatus.find_by!(status: 'Waiting for Processing')
         @order = Order.create!(user_id: user.id, cart_id: cart.id,
-                      billing_address_id: billing_a.id,
-                      shipping_address_id: shipping_a.id,
-                      delivery_id: delivery.id, payment_id: payment.id)
+                               billing_address_id: billing_a.id,
+                               shipping_address_id: shipping_a.id,
+                               delivery_id: delivery.id, payment_id: payment.id,
+                               order_statuses_id: order_status.id,
+                               discount: cart.discount)
         # user_info = UserInfo.find_or_create_by!(user_id: user.id)
         # user_info.update!(shipping_address_id: shipping_a.id,
         #                   billing_address_id: billing_a.id,

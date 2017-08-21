@@ -1,0 +1,23 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        %span.in-grey-600 Number
+      %th
+        %span.in-grey-600 Completed at
+      %th
+        %span.in-grey-600 Status
+      %th
+        %span.in-grey-600 Total
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td
+          = link_to order, class: 'general-order-number order-link' do
+            = order.id
+        %td
+          %span.in-grey-900.font-16.fw-300= order_date(order)
+        %td
+          %span.font-16.in-grey-900.fw-300= order.status
+        %td
+          %strong.font-16= number_to_euro(order.order_total)

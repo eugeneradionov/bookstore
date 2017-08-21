@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815143818) do
+ActiveRecord::Schema.define(version: 20170818141300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,12 @@ ActiveRecord::Schema.define(version: 20170815143818) do
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "cart_id"
     t.bigint "delivery_id"
@@ -125,9 +131,12 @@ ActiveRecord::Schema.define(version: 20170815143818) do
     t.bigint "billing_address_id"
     t.bigint "user_id"
     t.bigint "payment_id"
+    t.bigint "order_statuses_id"
+    t.decimal "discount", default: "0.0"
     t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["delivery_id"], name: "index_orders_on_delivery_id"
+    t.index ["order_statuses_id"], name: "index_orders_on_order_statuses_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -190,6 +199,7 @@ ActiveRecord::Schema.define(version: 20170815143818) do
 
   add_foreign_key "order_items", "books"
   add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "order_statuses", column: "order_statuses_id"
   add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
   add_foreign_key "user_infos", "users"

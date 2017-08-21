@@ -1,0 +1,49 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= "Order #{@order.id}"
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle.mt-0 Shipping Address
+      %p.general-address
+        = order_shipping_full_name
+        %br
+        = order_shipping_address
+        %br
+        = order_shipping_city_zip
+        %br
+        = order_shipping_country
+        %br
+        = order_shipping_phone
+    .col-sm-3
+      %h3.general-subtitle.mt-0 Billing Address
+      %p.general-address
+        = order_billing_full_name
+        %br
+        = order_billing_address
+        %br
+        = order_billing_city_zip
+        %br
+        = order_billing_country
+        %br
+        = order_billing_phone
+    .col-sm-3
+      %h3.general-subtitle.mt-0 Shipments
+      %p.general-address
+        = order_delivery_method
+        %br
+        = order_delivery_days
+        %br
+        = order_delivery_price
+    .col-sm-3
+      %h3.general-subtitle.mt-0 Payment Information
+      %p.general-address
+        = order_card_number
+        %br
+        = order_mm_yy
+  .visible-xs
+    = render 'visible_xs_order_items'
+  .hidden-xs.divider-lg.pt-20
+    = render 'hidden_xs_order_items'
+  .text-center.general-text-right
+    = render 'order_summary'
+  .text-center
+    = link_to 'Back', :back, class: 'btn btn-default mb-20'

@@ -74,7 +74,7 @@ class CheckoutController < ApplicationController
   end
 
   def login
-    # render 'checkout/login'
+    render 'checkout/login'
   end
 
   private
@@ -145,11 +145,29 @@ class CheckoutController < ApplicationController
   end
 
   def redirect_to_login_unless_user_logged_in
-    redirect_to login_path unless user_signed_in? # TODO: redirect to checkout login
-    # redirect_to checkout_login_path if current_user.signed_in?
+    # redirect_to login_path unless user_signed_in? # TODO: redirect to checkout login
+    redirect_to checkout_login_path unless user_signed_in?
   end
 
   def redirect_to_catalog_if_cart_empty
     redirect_to catalog_path if @cart.empty?
+  end
+
+  helper_method :resource_name, :resource, :devise_mapping, :resource_class
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def resource_class
+    User
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 end

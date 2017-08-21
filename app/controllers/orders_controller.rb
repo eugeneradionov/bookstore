@@ -1,15 +1,27 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :index]
+  before_action :authenticate_user!
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = @user.orders
+    @orders = filter_by_status
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if @user.orders.exists?(id: params[:id])
+      @shipping_a = ShippingAddress.find(@order.shipping_address_id)
+      @billing_a = BillingAddress.find(@order.billing_address_id)
+      @delivery = Delivery.find(@order.delivery_id)
+      @payment = Payment.find(@order.payment_id)
+      render 'show'
+    else
+      redirect_to orders_path
+    end
   end
 
   # GET /orders/new
@@ -62,13 +74,27 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.fetch(:order, {})
+  def set_user
+    @user = current_user
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.fetch(:order, {}).permit(:status)
+  end
+
+  def filter_by_status
+    if params[:status]
+      status = params[:status]
+      status_id = OrderStatus.find_by(status: status).id
+      @orders.where("order_statuses_id = #{status_id}")
+    else
+      @orders
     end
+  end
 end

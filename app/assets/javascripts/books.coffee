@@ -10,17 +10,15 @@ ready = ->
     $('#categories li a').removeClass 'bold'
     $(this).addClass 'bold'
 
-  $('#plus').on 'click', ->
-    $('#quantity').val(Number($('#quantity').val()) + 1)
+  $('.fa-plus').on 'click', ->
+    input = $(this).parent().children('#quantity')
+    input.val(Number(input.val()) + 1)
 
-  $('#minus').on 'click', ->
-    value = Number($('#quantity').val())
+  $('.fa-minus').on 'click', ->
+    input = $(this).parent().children('#quantity')
+    value = Number(input.val())
     if (value > 1)
-      value -= 1
-      $('#quantity').val(value)
-
-$(document).on 'page:load', ->
-  ready()
+      input.val(value - 1)
 
 $(document).ready ->
   ready()

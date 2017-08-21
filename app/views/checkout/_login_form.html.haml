@@ -1,0 +1,7 @@
+.text-center
+  %h3.general-login-title Returning Customer
+  = link_to user_facebook_omniauth_authorize_path, target: '_blank', class: 'general-login-icon' do
+    %i.fa.fa-facebook-official
+  %p.general-login-text or
+
+= render 'devise/shared/login_form'
