@@ -5,11 +5,22 @@ class HomeController < ApplicationController
     @books = Book.order(created_at: :desc).limit(3)
     @first_book = @books.first
     @books = @books.reject { |book| book == @first_book }
+    @bestsellers = bestsellers
   end
 
   private
 
   def book_first_sentence(book)
     book.description[/^(.*?)[.?!]/]
+  end
+
+  def bestsellers
+    books_orders_count = OrderItem.where('order_id IS NOT NULL')
+                                  .group(:book_id).limit(4).count
+    bestsellers = []
+    books_orders_count.each_key do |key|
+      bestsellers << Book.find(key)
+    end
+    bestsellers
   end
 end
