@@ -6,7 +6,7 @@
     %title Bookstore
     %link{href: 'https://fonts.googleapis.com/css?family=Open+Sans', rel: 'stylesheet'}
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
   %body
     %header.navbar.navbar-default
@@ -22,8 +22,6 @@
         = render 'layouts/partials/hidden_xs_cart_icon'
         #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': 'false'}
           .visible-xs
-            %button.close{type: 'button', 'aria-label': 'Close'}
-              %span{'aria-hidden': 'true'} &times;
             %ul.nav.navbar-nav
               %li
                 = link_to 'Home', root_path
