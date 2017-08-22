@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       @billing_a = BillingAddress.find(@order.billing_address_id)
       @delivery = Delivery.find(@order.delivery_id)
       @payment = Payment.find(@order.payment_id)
+      @order_items = @order.order_items
       render 'show'
     else
       redirect_to orders_path
