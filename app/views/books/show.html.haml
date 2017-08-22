@@ -20,7 +20,6 @@
               %a#plus.fa.fa-plus.line-height-40.input-link
           .col-xs-7.col-md-5
             = f.submit 'Add to Cart', class: 'btn btn-default pull-right general-position'
-            -#= link_to 'Add to Cart', order_items_path(book_id: @book), method: :post, class: 'btn btn-default pull-right general-position', remote: true
       .general-info-wrap.divider-lg
         %p Description
         %p.lead.small.line-height-2
@@ -40,37 +39,5 @@
         .clearfix
           %p.pull-left Materials
           %p.lead.small.pull-right Hardcove, glossy paper
-  .mb-80
-    %h3.in-gold-500.mb-25 Reviews (3)
-    .general-message-wrap.divider-lg
-      .clearfix
-        %img.img-circle.logo-size.inlide-block.pull-left{src: 'https://www.smashingmagazine.com/wp-content/uploads/2015/09/smashing-book-5-2-large.jpg'}
-        .ml-70
-          %div
-            .general-message-date.hidden-xs 11/11/16
-            .max-240
-              .general-message-verified Verified Reviewer
-              .general-message-name Rita J. Lewis
-          .mb-15
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-          %p Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.
-    .general-message-wrap.divider-lg
-      .clearfix
-        %span.img-circle.logo-size.inlide-block.pull-left.logo-empty M
-        .ml-70
-          %div
-            .general-message-date.hidden-xs 11/11/16
-            .max-240
-              .general-message-verified.pull-right Verified Reviewer
-              .general-message-name May J. Novoa
-          .mb-15
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star
-            %i.fa.fa-star.rate-star.rate-empty
-          %p If ‘Get a better job’ had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.
+  = render 'reviews'
+  = render 'add_review_form' if user_signed_in?

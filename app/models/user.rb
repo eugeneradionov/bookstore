@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :cart
   has_one :user_info
   has_many :orders
+  has_many :reviews
 
   validates :email, presence: true
   validates :email, uniqueness: true
@@ -32,6 +33,14 @@ class User < ApplicationRecord
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
+    end
+  end
+
+  def full_name
+    if first_name && last_name
+      "#{first_name} #{last_name}"
+    else
+      email.split('@').first
     end
   end
 end

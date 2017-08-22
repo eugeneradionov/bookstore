@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @order_item = OrderItem.new
+    @review = Review.new
   end
 
   # GET /books/new

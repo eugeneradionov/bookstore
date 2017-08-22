@@ -168,6 +168,8 @@ book.categories << [Category.find_by(name: 'Mobile Development')]
 book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
+`rake books_parser:parse`
+
 Delivery.create!(method: 'Delivery Next Day!', days_from: 3, days_to: 7, price: 5)
 Delivery.create!(method: 'Pick Up In-Store', days_from: 5, days_to: 20, price: 0)
 Delivery.create!(method: 'Expressit', days_from: 2, days_to: 3, price: 15)
@@ -181,3 +183,12 @@ OrderStatus.create!(status: 'Waiting for Processing')
 OrderStatus.create!(status: 'In Progress')
 OrderStatus.create!(status: 'In Delivery')
 OrderStatus.create!(status: 'Delivered')
+
+Book.all.each do |book|
+  users = User.all
+  users_count = User.count
+  rand(3..6).times do
+    user_id = users[rand(users_count)].id
+    Review.create!(user_id: user_id, book_id: book.id, rating: rand(1..5), title: FFaker::Lorem.phrase, text: FFaker::Lorem.paragraph, approved: true)
+  end
+end

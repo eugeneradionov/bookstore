@@ -13,4 +13,4 @@
       %p.title= book.title
       %p.font-16.in-gold-500= number_to_euro(book.price)
     %span.divider-sm
-    %p.lead.small= book.authors.map(&:name).join(', ')
+    %p.lead.small= book_authors(book)

@@ -1,0 +1,16 @@
+.mb-60
+  %h3.in-gold-500.mb-25= "Reviews #{book_approved_reviews_count}"
+  - @book.reviews.each do |review|
+    - if review.approved
+      .general-message-wrap.divider-lg
+        .clearfix
+          %span.img-circle.logo-size.inlide-block.pull-left.logo-empty= book_review_avatar_letter(review)
+          .ml-70
+            %div
+              .general-message-date.hidden-xs= book_review_date(review)
+              .max-240
+                -#.general-message-verified Verified Reviewer
+                .general-message-name= review.user.full_name
+            = render 'books/review_rating', review: review
+            %strong.mb-10= review.title
+            %p= review.text
