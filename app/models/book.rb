@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :image_urls
-  has_many :line_items
+  has_many :order_items
   has_many :reviews
 
   before_destroy :ensure_no_order_items

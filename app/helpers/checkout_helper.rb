@@ -107,9 +107,4 @@ module CheckoutHelper
   def delivery_price(delivery)
     delivery.price.zero? ? 'Free' : number_to_euro(delivery.price)
   end
-
-  def country_name(country_code)
-    country = ISO3166::Country[country_code]
-    country.translations[I18n.locale.to_s] || country.name
-  end
 end

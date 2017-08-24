@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  authorize_resource
   # GET /cart
   def show
   end

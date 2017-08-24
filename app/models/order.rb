@@ -1,11 +1,16 @@
 class Order < ApplicationRecord
-  has_one :delivery
-  has_one :shipping_address
-  has_one :billing_address
-  has_one :user
-  has_one :payment
-  has_one :order_status
+  belongs_to :delivery
+  belongs_to :shipping_address
+  belongs_to :billing_address
+  belongs_to :user
+  belongs_to :payment
+  belongs_to :order_status
   has_many :order_items
+
+  scope :in_delivery, -> { where(order_status: OrderStatus.find_by(status: 'In Delivery')) }
+  scope :delivered, -> { where(order_status: OrderStatus.find_by(status: 'Delivered')) }
+  scope :waiting_for_processing, -> { where(order_status: OrderStatus.find_by(status: 'Waiting for Processing')) }
+  scope :in_progress, -> { where(order_status: OrderStatus.find_by(status: 'In Progress')) }
 
   def order_total
     discount_amount = discount || 0
@@ -13,7 +18,7 @@ class Order < ApplicationRecord
   end
 
   def order_total_with_delivery
-    delivery_price = Delivery.find(delivery_id).price
+    delivery_price = delivery.price
     order_total + delivery_price
   end
 
@@ -22,6 +27,6 @@ class Order < ApplicationRecord
   end
 
   def status
-    OrderStatus.find(order_statuses_id).status
+    order_status.status
   end
 end

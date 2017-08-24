@@ -13,11 +13,11 @@ class Checkout
 
   validates_presence_of :billing_first_name, :billing_last_name, :billing_address,
                         :billing_city, :billing_zip, :billing_country, :billing_phone,
-                        if: lambda { |checkout| checkout.current_step == 'address' }
+                        if: 'address_step?'
 
   validates_presence_of :shipping_first_name, :shipping_last_name, :shipping_address,
                         :shipping_city, :shipping_zip, :shipping_country, :shipping_phone,
-                        if: lambda { |checkout| checkout.use_billing_address == '0' && checkout.current_step == 'address' }
+                        if: lambda { |checkout| checkout.use_billing_address == '0' && checkout.address_step? }
 
   validates_presence_of :delivery_method,
                         if: lambda { |checkout| checkout.current_step == 'delivery' }
@@ -70,7 +70,7 @@ class Checkout
                                billing_address_id: billing_a.id,
                                shipping_address_id: shipping_a.id,
                                delivery_id: delivery.id, payment_id: payment.id,
-                               order_statuses_id: order_status.id,
+                               order_status_id: order_status.id,
                                discount: cart.discount)
         # user_info = UserInfo.find_or_create_by!(user_id: user.id)
         # user_info.update!(shipping_address_id: shipping_a.id,

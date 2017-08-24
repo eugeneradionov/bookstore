@@ -20,7 +20,7 @@ module BookHelper
   end
 
   def book_approved_reviews_count
-    count = @book.reviews.where('approved = TRUE').count
+    count = @book.reviews.approved.count
     count.zero? ? '' : "(#{count})"
   end
 

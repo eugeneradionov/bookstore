@@ -31,7 +31,7 @@
     .form-group.has-error
       = f.label :card_number, class: 'control-label input-label'
       = f.number_field :card_number, class: 'form-control', id: 'cardNumber', placeholder: 'Card Number'
-      %span.help-block= error_message_for(:card_number)
+      %span.help-block= error_message_for(@checkout, :card_number)
   .row
     .col-sm-6
       - if @checkout.errors[:name_on_card].empty?
@@ -42,7 +42,7 @@
         .form-group.has-error
           = f.label :name_on_card, class: 'control-label input-label'
           = f.text_field :name_on_card, class: 'form-control', id: 'cardName', placeholder: 'Name on Card'
-          %span.help-block= error_message_for(:name_on_card)
+          %span.help-block= error_message_for(@checkout, :name_on_card)
 
     .col-sm-3
       - if @checkout.errors[:mm_yy].empty?
@@ -53,7 +53,7 @@
         .form-group.has-error
           = f.label :mm_yy, 'MM / YY', class: 'control-label input-label'
           = f.text_field :mm_yy, class: 'form-control', placeholder: 'MM / YY'
-          %span.help-block= error_message_for(:mm_yy)
+          %span.help-block= error_message_for(@checkout, :mm_yy)
 
     .col-sm-3
       - if @checkout.errors[:cvv].empty?
@@ -70,6 +70,6 @@
           #cvv_help.fa.fa-question-circle.general-form-help
             .tooltip-text
               3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front
-          %span.help-block= error_message_for(:cvv)
+          %span.help-block= error_message_for(@checkout, :cvv)
 .general-text-align
   = render 'order_summary'

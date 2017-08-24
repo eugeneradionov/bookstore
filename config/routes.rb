@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: { sessions: 'admins/sessions' }
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   resources :reviews, only: [:create, :destroy]
   resources :order_items, only: [:create, :destroy]
+
   root 'home#index'
+
   resources :books
   resources :orders
 

@@ -184,11 +184,22 @@ OrderStatus.create!(status: 'In Progress')
 OrderStatus.create!(status: 'In Delivery')
 OrderStatus.create!(status: 'Delivered')
 
+ReviewStatus.create!(status: 'Approved')
+ReviewStatus.create!(status: 'Unprocessed')
+ReviewStatus.create!(status: 'Rejected')
+
 Book.all.each do |book|
   users = User.all
   users_count = User.count
-  rand(3..6).times do
+  review_status = ReviewStatus.all
+  rand(6..12).times do
     user_id = users[rand(users_count)].id
-    Review.create!(user_id: user_id, book_id: book.id, rating: rand(1..5), title: FFaker::Lorem.phrase, text: FFaker::Lorem.paragraph, approved: true)
+    r = Review.new(user_id: user_id, book_id: book.id, rating: rand(1..5),
+                   title: FFaker::Lorem.phrase, text: FFaker::Lorem.paragraph)
+    r.review_status = review_status[rand(3)]
+    r.save!
   end
 end
+
+Admin.create!(login: 'admin', email: 'admin@admin.com',
+              password: 'bookstoreadmin', password_confirmation: 'bookstoreadmin')

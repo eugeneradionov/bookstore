@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
-gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'cancancan', '~> 2.0'
 gem 'devise', '~> 4.3'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'haml', '~> 5.0', '>= 5.0.1'
@@ -42,6 +42,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.2.3'
 gem 'nokogiri', '~> 1.8'
 gem 'country_select', '~> 3.1'
+gem 'rails_admin', '~> 1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

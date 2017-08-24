@@ -15,10 +15,8 @@ class User < ApplicationRecord
 
   validate :password_validation
 
-  def password_validation
-    if password.present? && !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
-      errors.add :password, 'must have at least 8 characters length, include at least one lowercase letter, one uppercase letter, and one digit'
-    end
+  rails_admin do
+    object_label_method :email
   end
 
   def self.from_omniauth(auth)
@@ -41,6 +39,14 @@ class User < ApplicationRecord
       "#{first_name} #{last_name}"
     else
       email.split('@').first
+    end
+  end
+
+  private
+
+  def password_validation
+    if password.present? && !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/)
+      errors.add :password, 'must have at least 8 characters length, include at least one lowercase letter, one uppercase letter, and one digit'
     end
   end
 end

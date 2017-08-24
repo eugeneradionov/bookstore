@@ -1,8 +1,10 @@
 class CheckoutController < ApplicationController
   attr_writer :current_step
+  helper_method :resource_name, :resource, :devise_mapping, :resource_class
   before_action :redirect_to_login_unless_user_logged_in, except: :login
   before_action :redirect_to_catalog_if_cart_empty, except: :complete
   before_action :set_order_cart
+  authorize_resource
 
   def new
     session[:checkout_params] ||= {}
@@ -145,7 +147,6 @@ class CheckoutController < ApplicationController
   end
 
   def redirect_to_login_unless_user_logged_in
-    # redirect_to login_path unless user_signed_in? # TODO: redirect to checkout login
     redirect_to checkout_login_path unless user_signed_in?
   end
 
@@ -153,7 +154,7 @@ class CheckoutController < ApplicationController
     redirect_to catalog_path if @cart.empty?
   end
 
-  helper_method :resource_name, :resource, :devise_mapping, :resource_class
+  # ==Devise custom form==
 
   def resource_name
     :user
