@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.review_status = ReviewStatus.find_by(status: 'Unprocessed')
 
     respond_to do |format|
       if @review.save

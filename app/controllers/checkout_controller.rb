@@ -19,7 +19,7 @@ class CheckoutController < ApplicationController
 
     if session[:order_id]
       @order = Order.find(session[:order_id])
-      @user = User.find(@order.user_id)
+      @user = @order.user
     end
   end
 
@@ -66,9 +66,9 @@ class CheckoutController < ApplicationController
     cart = Cart.new
     cart.order_items = @order.order_items
     @order_cart = cart
-    @user = User.find(@order.user_id)
-    @shipping_address = ShippingAddress.find(@order.shipping_address_id)
-    delivery = Delivery.find(@order.delivery_id).method
+    @user = @order.user
+    @shipping_address = @order.shipping_address
+    delivery = @order.delivery
     @checkout = Checkout.new(delivery_method: delivery)
 
     session[:current_step] = nil
@@ -82,12 +82,24 @@ class CheckoutController < ApplicationController
   private
 
   def set_shipping_and_billing_address
+    set_shipping_address
+    set_billing_address
+  end
+
+  def set_shipping_address
     user_info = current_user.user_info
     begin
       @shipping_a = ShippingAddress.find(user_info.shipping_address_id)
-      @billing_a = BillingAddress.find(user_info.billing_address_id)
     rescue NoMethodError
       @shipping_a = ShippingAddress.new
+    end
+  end
+
+  def set_billing_address
+    user_info = current_user.user_info
+    begin
+      @billing_a = BillingAddress.find(user_info.billing_address_id)
+    rescue NoMethodError
       @billing_a = BillingAddress.new
     end
   end
@@ -154,7 +166,7 @@ class CheckoutController < ApplicationController
     redirect_to catalog_path if @cart.empty?
   end
 
-  # ==Devise custom form==
+  # == Devise custom form ==
 
   def resource_name
     :user

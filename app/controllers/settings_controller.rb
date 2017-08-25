@@ -40,12 +40,24 @@ class SettingsController < ApplicationController
   end
 
   def set_shipping_and_billing_address
+    set_shipping_address
+    set_billing_address
+  end
+
+  def set_shipping_address
     user_info = current_user.user_info
     begin
       @shipping_a = ShippingAddress.find(user_info.shipping_address_id)
-      @billing_a = BillingAddress.find(user_info.billing_address_id)
     rescue NoMethodError
       @shipping_a = ShippingAddress.new
+    end
+  end
+
+  def set_billing_address
+    user_info = current_user.user_info
+    begin
+      @billing_a = BillingAddress.find(user_info.billing_address_id)
+    rescue NoMethodError
       @billing_a = BillingAddress.new
     end
   end

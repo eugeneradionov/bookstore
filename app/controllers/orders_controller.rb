@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :index]
-  before_action :authenticate_user!
 
   # GET /orders
   # GET /orders.json
@@ -14,10 +14,10 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     if @user.orders.exists?(id: params[:id])
-      @shipping_a = ShippingAddress.find(@order.shipping_address_id)
-      @billing_a = BillingAddress.find(@order.billing_address_id)
-      @delivery = Delivery.find(@order.delivery_id)
-      @payment = Payment.find(@order.payment_id)
+      @shipping_a = @order.shipping_address
+      @billing_a = @order.billing_address
+      @delivery = @order.delivery
+      @payment = @order.payment
       @order_items = @order.order_items
       render 'show'
     else
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     if params[:status]
       status = params[:status]
       status_id = OrderStatus.find_by(status: status).id
-      @orders.where("order_statuses_id = #{status_id}")
+      @orders.where("order_status_id = #{status_id}")
     else
       @orders
     end

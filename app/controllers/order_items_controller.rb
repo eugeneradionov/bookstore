@@ -21,6 +21,7 @@ class OrderItemsController < ApplicationController
         format.json { render :show, status: :created, location: @order_item }
       else
         format.html
+        format.js
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end
     end

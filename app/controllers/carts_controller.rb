@@ -23,8 +23,8 @@ class CartsController < ApplicationController
   # POST cart/1
   def update
     coupon = Coupon.find_by(code: params[:cart][:discount])
-    if coupon
-      params[:cart][:discount] = (coupon.active ? coupon.discount : nil)
+    if coupon && coupon.active
+      params[:cart][:discount] = coupon.discount
       coupon.active = false
       coupon.save
     else
