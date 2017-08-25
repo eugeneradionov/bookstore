@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  has_one :cart
-  has_one :user_info
-  has_many :orders
-  has_many :reviews
+  has_one :cart # , dependent: :destroy
+  has_one :user_info # , dependent: :destroy
+  has_many :orders # TODO: what to do with orders when we delete user?
+  has_many :reviews # , dependent: :destroy
 
   validates :email, presence: true
   validates :email, uniqueness: true

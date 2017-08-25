@@ -11,6 +11,7 @@ class Order < ApplicationRecord
   scope :delivered, -> { where(order_status: OrderStatus.find_by(status: 'Delivered')) }
   scope :waiting_for_processing, -> { where(order_status: OrderStatus.find_by(status: 'Waiting for Processing')) }
   scope :in_progress, -> { where(order_status: OrderStatus.find_by(status: 'In Progress')) }
+  scope :canceled, -> { where(order_status: OrderStatus.find_by(status: 'Canceled')) }
 
   def order_total
     discount_amount = discount || 0

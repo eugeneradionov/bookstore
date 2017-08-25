@@ -183,6 +183,7 @@ OrderStatus.create!(status: 'Waiting for Processing')
 OrderStatus.create!(status: 'In Progress')
 OrderStatus.create!(status: 'In Delivery')
 OrderStatus.create!(status: 'Delivered')
+OrderStatus.create!(status: 'Canceled')
 
 ReviewStatus.create!(status: 'Approved')
 ReviewStatus.create!(status: 'Unprocessed')

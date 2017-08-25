@@ -21,7 +21,7 @@ RailsAdmin.config do |config|
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
+  config.show_gravatar = false
 
   config.excluded_models = [Cart, UserInfo]
 
@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
     bulk_delete
     show
     edit do
-      except [Payment, OrderItem, ShippingAddress, BillingAddress, Order, User]
+      except [Payment, OrderItem, ShippingAddress, BillingAddress, User]
     end
     delete do
       except [Payment, OrderItem, ShippingAddress, BillingAddress, Order, User]
@@ -91,7 +91,7 @@ RailsAdmin.config do |config|
 
   config.model Order do
     list do
-      scopes [:waiting_for_processing, :in_progress, :in_delivery, :delivered]
+      scopes [:waiting_for_processing, :in_progress, :in_delivery, :delivered, :canceled]
       field :id
       field :order_status
       field :created_at
@@ -168,9 +168,9 @@ RailsAdmin.config do |config|
 
   config.model Payment do
     list do
-      field :card_number
-      field :name_on_card
-      field :mm_yy
+      field :card_number # TODO: is it secure to show full card number?
+      field :name_on_card # TODO: --//--//--
+      field :mm_yy # TODO: --//--//--
     end
 
     show do
