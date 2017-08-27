@@ -11,6 +11,8 @@ jobs:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: bookstore
+          DEVISE_SECRET: '071e7c184781ba306d1b4957cf91c2651bb7ce2ac15d37027f6728dc618a15475ec61e933a771f9bf8c95a44aa786e597c5ed9be5b10ddaf290837d6e675dd5d'
+          DEVISE_FACEBOOK_APP_ID: '118440512125189'
       - image: circleci/postgres:9.4.12-alpine
         environment:
           POSTGRES_USER: bookstore
