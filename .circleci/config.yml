@@ -1,52 +1,24 @@
-version: 2
+## Customize the test machine
+machine:
+
+  ruby:
+    version:
+      2.4.1
+
+  environment:
+
 dependencies:
   override:
     - mv config/secrets.ci.yml config/secrets.yml
-  pre:
-    - bin/rails secrets:setup
-    - gem install bundler
-jobs:
-  build:
-    working_directory: ~/circleci-demo-ruby-rails
-    docker:
-      - image: circleci/ruby:2.4.1-node
-        enviroment:
-          RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: bookstore
-      - image: circleci/postgres:9.4.12-alpine
-        environment:
-          POSTGRES_USER: bookstore
-          POSTGRES_DB: bookstore_test
-          POSTGRES_PASSWORD: "qwerty"
-    steps:
-      - checkout
 
-      # Restore bundle cache
-      - type: cache-restore
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
+## Customize database setup
+database:
+  override:
+    # replace CircleCI's generated database.yml
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load
 
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-
-      # Store bundle cache
-      - type: cache-save
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
-      # Run rspec in parallel
-      - type: shell
-        command: |
-          bundle exec rspec --format RspecJunitFormatter \
-                            --out /tmp/test-results/rspec.xml \
-                            --format progress \
-                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      # Save artifacts
-      - type: store_test_results
-        path: /tmp/test-results
+## Customize test commands
+test:
+  override:
+    - bundle exec rspec
