@@ -1,4 +1,7 @@
 version: 2
+dependencies:
+  pre:
+    - gem install bundler
 jobs:
   build:
     working_directory: ~/circleci-demo-ruby-rails
