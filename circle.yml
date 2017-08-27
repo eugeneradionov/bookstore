@@ -3,6 +3,8 @@ machine:
   ruby:
     version:
       2.4.1
+  environment:
+      DEVISE_SECRET: '109fea097036bda69e73992de3afdc26d63302e65ccac5484cdc94cb478dd6d501e04e6d6e8a188bd31820510c84f8e6035fd563c22db0f56fb48a00bf91d2ed'
 
 dependencies:
   pre:
