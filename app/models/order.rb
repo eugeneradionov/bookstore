@@ -13,6 +13,8 @@ class Order < ApplicationRecord
   scope :in_progress, -> { where(order_status: OrderStatus.find_by(status: 'In Progress')) }
   scope :canceled, -> { where(order_status: OrderStatus.find_by(status: 'Canceled')) }
 
+  validates :shipping_address_id, :billing_address_id, presence: true
+
   def order_total
     discount_amount = discount || 0
     order_items.to_a.sum(&:subtotal_price) - discount_amount
