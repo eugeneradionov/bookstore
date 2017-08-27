@@ -8,6 +8,8 @@ machine:
   environment:
 
 dependencies:
+  pre:
+    - gem install bundle
   override:
     - mv config/secrets.ci.yml config/secrets.yml
 
