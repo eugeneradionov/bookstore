@@ -95,6 +95,9 @@ GEM
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffaker (2.6.0)
@@ -312,7 +315,7 @@ DEPENDENCIES
   country_select (~> 3.1)
   database_cleaner (~> 1.6, >= 1.6.1)
   devise (~> 4.3)
-  factory_girl (~> 4.8)
+  factory_girl_rails (~> 4.8)
   ffaker (~> 2.6)
   figaro (~> 1.1, >= 1.1.1)
   haml (~> 5.0, >= 5.0.1)
@@ -338,4 +341,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

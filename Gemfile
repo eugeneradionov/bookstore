@@ -43,6 +43,7 @@ gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.2.3'
 gem 'nokogiri', '~> 1.8'
 gem 'country_select', '~> 3.1'
 gem 'rails_admin', '~> 1.2'
+gem 'ffaker', '~> 2.6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -54,8 +55,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'factory_girl', '~> 4.8'
-  gem 'ffaker', '~> 2.6'
+  gem 'factory_girl_rails', '~> 4.8'
 end
 
 group :development do
