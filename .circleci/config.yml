@@ -1,5 +1,7 @@
 version: 2
 dependencies:
+  override:
+    - mv config/secrets.ci.yml config/secrets.yml
   pre:
     - bin/rails secrets:setup
     - gem install bundler
