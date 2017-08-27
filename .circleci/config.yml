@@ -7,7 +7,15 @@ jobs:
     working_directory: ~/circleci-demo-ruby-rails
     docker:
       - image: circleci/ruby:2.4.1-node
+        enviroment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: bookstore
       - image: circleci/postgres:9.4.12-alpine
+        environment:
+          POSTGRES_USER: bookstore
+          POSTGRES_DB: bookstore_test
+          POSTGRES_PASSWORD: "qwerty"
     steps:
       - checkout
 
@@ -25,9 +33,6 @@ jobs:
           - vendor/bundle
 
       # Database setup
-      - run: psql -c 'create database bookstore_test;' -U postgres
-      - run: psql -c "CREATE USER bookstore WITH PASSWORD 'qwerty';" -U postgres
-      - run: psql -c "GRANT ALL PRIVILEGES ON DATABASE bookstore_test TO bookstore;" -U postgres
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
