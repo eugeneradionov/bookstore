@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'cancancan', '~> 2.0'
 gem 'devise', '~> 4.3'
@@ -56,6 +55,7 @@ group :development, :test do
   gem 'capybara', '~> 2.14', '>= 2.14.4'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl_rails', '~> 4.8'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 end
 
 group :development do

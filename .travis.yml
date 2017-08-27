@@ -4,6 +4,8 @@ rvm:
   - 2.4.1
 env:
   - DB=postgresql
+  - DEVISE_FACEBOOK_APP_SECRET='11a81fd5b3b55d39bd0fdc21c2b6dd02fea370f887cf64f8525d8e4f0d47780d5c4a25346195e92e698f12bb9e86584baaafd2131187bd6ced59ffed0e9a6679'
+  - DEVISE_FACEBOOK_APP_ID='118440512125189'
 services:
   - postgresql
 script:

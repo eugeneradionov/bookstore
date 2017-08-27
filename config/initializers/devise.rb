@@ -253,8 +253,8 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # config.omniauth :facebook, '118440512125189', 'dd39d8637bd71f50ffc164aa1450604f'
   config.omniauth :facebook,
-                  ENV['devise_facebook_app_id'],
-                  ENV['devise_facebook_app_secret']
+                  ENV['DEVISE_FACEBOOK_APP_ID'],
+                  ENV['DEVISE_FACEBOOK_APP_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
