@@ -1,6 +1,7 @@
 version: 2
 dependencies:
   pre:
+    - bin/rails secrets:setup
     - gem install bundler
 jobs:
   build:
@@ -11,7 +12,7 @@ jobs:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: bookstore
-          DEVISE_SECRET: '071e7c184781ba306d1b4957cf91c2651bb7ce2ac15d37027f6728dc618a15475ec61e933a771f9bf8c95a44aa786e597c5ed9be5b10ddaf290837d6e675dd5d'
+          DEVISE_SECRET: 'f586be2b0c5a68d8065fa6937e1559130304d8111850e74c3bdd5dbf6959f2044cd77987b085c9ffdc1149bbb75dab221403028c4a0af0a1f6e220418d4acbff'
           DEVISE_FACEBOOK_APP_ID: '118440512125189'
       - image: circleci/postgres:9.4.12-alpine
         environment:
