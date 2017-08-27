@@ -25,6 +25,9 @@ jobs:
           - vendor/bundle
 
       # Database setup
+      - run: psql -c 'create database bookstore_test;' -U postgres
+      - run: psql -c "CREATE USER bookstore WITH PASSWORD 'qwerty';" -U postgres
+      - run: psql -c "GRANT ALL PRIVILEGES ON DATABASE bookstore_test TO bookstore;" -U postgres
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
