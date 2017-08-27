@@ -9,6 +9,9 @@ dependencies:
     - gem install bundler
     - gem install rubygems-bundler
     - gem regenerate_binstubs
+    - psql -c 'create database bookstore_test;' -U postgres
+    - psql -c "CREATE USER bookstore WITH PASSWORD 'qwerty';" -U postgres
+    - psql -c "GRANT ALL PRIVILEGES ON DATABASE bookstore_test TO bookstore;" -U postgres
 
 ## Customize database setup
 database:
