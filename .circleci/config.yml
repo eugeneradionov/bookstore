@@ -34,6 +34,9 @@ jobs:
 
       # Database setup
       - run: bundle exec rake db:create
+        environment:
+          DEVISE_FACEBOOK_APP_ID: '118440512125189'
+          DEVISE_SECRET: '3be4efb1946d582b14434103f75035e81557d71660f214f500d6bc897ccf4bbff92826030e2d7c8face14e87375b1e0a8ce3733a213c9a9892437fc5c0724ff0'
       - run: bundle exec rake db:schema:load
 
       # Run rspec in parallel
