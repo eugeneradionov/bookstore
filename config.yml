@@ -6,8 +6,7 @@ machine:
       2.4.1
 dependencies:
   pre:
-    - gem uninstall bundler # use a custom version of bundler
-    - gem install bundler --pre
+    - gem install bundler && gem install rubygems-bundler && gem regenerate_binstubs
 
 ## Customize database setup
 database:
