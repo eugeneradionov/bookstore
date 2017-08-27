@@ -4,9 +4,6 @@ machine:
   ruby:
     version:
       2.4.1
-
-  environment:
-
 dependencies:
   pre:
     - gem install bundle
