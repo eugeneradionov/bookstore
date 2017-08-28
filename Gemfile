@@ -56,6 +56,7 @@ group :development, :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do

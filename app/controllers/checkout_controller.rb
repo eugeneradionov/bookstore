@@ -1,6 +1,7 @@
 class CheckoutController < ApplicationController
   attr_writer :current_step
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
+
   before_action :redirect_to_login_unless_user_logged_in, except: :login
   before_action :redirect_to_catalog_if_cart_empty, except: :complete
   before_action :set_order_cart

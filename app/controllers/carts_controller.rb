@@ -1,35 +1,13 @@
 class CartsController < ApplicationController
   authorize_resource
+
   # GET /cart
   def show
   end
 
   # POST /cart
-  # POST /cart.json
-  def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # POST cart/1
   def update
-    coupon = Coupon.find_by(code: params[:cart][:discount])
-    if coupon && coupon.active
-      params[:cart][:discount] = coupon.discount
-      coupon.active = false
-      coupon.save
-    else
-      params[:cart][:discount] = nil
-    end
+    set_coupon_to_params
 
     respond_to do |format|
       if @cart.update(cart_params)
@@ -43,7 +21,7 @@ class CartsController < ApplicationController
 
   # DELETE /cart/1
   # DELETE /cart/1.json
-  def destroy
+  def destroy # TODO: not sure we need it
     @cart.destroy
     respond_to do |format|
       format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
@@ -52,6 +30,17 @@ class CartsController < ApplicationController
   end
 
   private
+
+  def set_coupon_to_params
+    coupon = Coupon.find_by(code: params[:cart][:discount])
+    if coupon && coupon.active
+      params[:cart][:discount] = coupon.discount
+      coupon.active = false
+      coupon.save
+    else
+      params[:cart][:discount] = nil
+    end
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def cart_params

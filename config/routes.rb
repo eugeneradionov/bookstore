@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :books
-  resources :orders
+  resources :books, only: [:index, :show]
+  resources :orders, except: [:destroy]
 
   as :user do
     get 'login', to: 'users/sessions#new'
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     put 'users', to: 'users/registrations#update'
     delete 'users', to: 'users/registrations#destroy'
   end
+
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
   get 'catalog', to: 'books#index'
 
