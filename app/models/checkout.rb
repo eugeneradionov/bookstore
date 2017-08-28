@@ -72,11 +72,6 @@ class Checkout
                                delivery_id: delivery.id, payment_id: payment.id,
                                order_status_id: order_status.id,
                                discount: cart.discount)
-        # user_info = UserInfo.find_or_create_by!(user_id: user.id)
-        # user_info.update!(shipping_address_id: shipping_a.id,
-        #                   billing_address_id: billing_a.id,
-        #                   payment_id: payment.id)
-
       end
 
     rescue ActiveRecord::StatementInvalid => e
