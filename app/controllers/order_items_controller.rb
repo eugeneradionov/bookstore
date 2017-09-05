@@ -1,26 +1,20 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: [:show, :destroy]
-
-  # GET /order_items/1
-  # GET /order_items/1.json
-  def show
-  end
+  before_action :set_order_item, only: [:destroy]
 
   # POST /order_items
   # POST /order_items.json
   def create
-    # book = Book.find(params[:book_id])
     book_id = params[:book_id]
     quantity = params[:order_item] ? params[:order_item][:quantity] : 1
     @order_item = @cart.add_book(book_id, quantity)
 
     respond_to do |format|
       if @order_item.save
-        format.html { redirect_to request.referrer }
+        format.html { redirect_to(request.referrer || root_path)}
         format.js
         format.json { render :show, status: :created, location: @order_item }
       else
-        format.html
+        format.html { redirect_to(request.referrer || root_path) }
         format.js
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end

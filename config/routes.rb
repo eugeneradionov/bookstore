@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :books, only: [:index, :show]
-  resources :orders, except: [:destroy]
+  resources :orders, only: [:show, :index]
 
   as :user do
     get 'login', to: 'users/sessions#new'
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
 
   get 'cart', to: 'carts#show'
   post 'cart', to: 'carts#update'
-  delete 'cart', to: 'carts#destroy'
 
   get 'checkout', to: 'checkout#new'
   post 'checkout', to: 'checkout#create'

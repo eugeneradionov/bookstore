@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   def bestsellers
     books_orders_count = OrderItem.where('order_id IS NOT NULL').group(:book_id)
-                             .order('count_all DESC').limit(4).count()
+                                  .order('count_all DESC').limit(4).count
 
     bestsellers = []
     books_orders_count.each_key do |key|

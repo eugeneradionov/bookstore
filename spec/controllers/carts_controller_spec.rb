@@ -22,19 +22,4 @@ RSpec.describe CartsController, type: :controller do
       post :update
     end
   end
-
-  # describe 'DELETE #destroy' do
-  #   xit 'destroys the requested cart' do
-  #     cart = Cart.create! valid_attributes
-  #     expect do
-  #       delete :destroy, params: { id: cart.to_param }
-  #     end.to change(Cart, :count).by(-1)
-  #   end
-  #
-  #   xit 'redirects to the carts list' do
-  #     cart = Cart.create! valid_attributes
-  #     delete :destroy, params: { id: cart.to_param }
-  #     expect(response).to redirect_to(carts_url)
-  #   end
-  # end
 end
