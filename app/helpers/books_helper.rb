@@ -1,4 +1,4 @@
-module BookHelper
+module BooksHelper
   def book_price(book)
     "€#{book.price}"
   end
