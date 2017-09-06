@@ -42,6 +42,12 @@ class User < ApplicationRecord
     end
   end
 
+  def bought_book?(book)
+    orders.map do |order|
+      order.order_items.where(book_id: book.id)
+    end.any?
+  end
+
   private
 
   def password_validation

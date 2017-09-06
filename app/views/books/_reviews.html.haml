@@ -8,7 +8,7 @@
           %div
             .general-message-date.hidden-xs= book_review_date(review)
             .max-240
-              -#.general-message-verified Verified Reviewer
+              .general-message-verified= 'Verified Reviewer' if review.user.bought_book?(@book)
               .general-message-name= review.user.full_name
           = render 'books/review_rating', review: review
           %strong.mb-10= review.title
