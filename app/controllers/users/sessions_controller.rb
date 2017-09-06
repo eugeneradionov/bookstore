@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   def new
@@ -10,7 +10,12 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    current_user.cart = Cart.find(session[:cart_id]) if session[:cart_id]
+    session_cart = Cart.find(session[:cart_id]) if session[:cart_id]
+    current_user.cart = if session_cart&.empty?
+                          current_user.cart
+                        else
+                          session_cart
+                        end
   end
 
   # DELETE /resource/sign_out
@@ -21,7 +26,7 @@ class Users::SessionsController < Devise::SessionsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  end
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  # end
 end
