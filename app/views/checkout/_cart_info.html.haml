@@ -9,6 +9,13 @@
         %p.font-16 Shipping:
       %td
         %p.font-16= delivery_price(@checkout.delivery)
+
+  - if @checkout.cart.discount
+    %tr
+      %td
+        %p.font-16 Discount:
+      %td
+        %p.font-16= number_to_euro(@checkout.cart.discount)
   %tr
     %td
       %p.font-16 Order Total:
