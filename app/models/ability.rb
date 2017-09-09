@@ -6,6 +6,7 @@ class Ability
     if user.is_a? Admin
       can :manage, :all
     elsif user.is_a? User
+      # if user.new_record or not to authorize guest user
       can :read, Book
       can :manage, Checkout
       can [:read, :update], Cart, user_id: user.id

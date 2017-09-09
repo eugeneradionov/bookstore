@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :book do
-    title FFaker::Lorem.sentence
-    description FFaker::Lorem.paragraph
+    title FFaker::Book.title
+    description FFaker::Book.description
     publication_year 2015
     price 9.99
     height 9.99
