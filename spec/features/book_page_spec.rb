@@ -27,12 +27,13 @@ RSpec.describe 'Book Page', type: :feature do
       expect(current_path).to eq(book_path(@book))
     end
 
-    # scenario 'Can increase book quantity' do
+    # scenario 'Can increase books quantity' do
     #   find('#plus').click
+    #   # click_link('plus')
     #   expect(find('#quantity').value).to eq('2')
     # end
 
-    # scenario 'Can decrease book quantity' do
+    # scenario 'Can decrease books quantity' do
     #   find('#plus').click
     #   find('#plus').click
     #   find('#minus').click

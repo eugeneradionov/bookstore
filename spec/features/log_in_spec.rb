@@ -19,8 +19,6 @@ RSpec.describe 'Singing in', type: :feature do
       expect(current_path).to eq(root_path)
     end
 
-    given(:other_user) { User.make(email: 'other@example.com', password: 'rous') }
-
     scenario 'Signing in as another user' do
       visit '/login'
       within('#new_user') do
