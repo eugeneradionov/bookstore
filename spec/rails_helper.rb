@@ -2,7 +2,6 @@
 require 'spec_helper'
 require 'support/factory_girl'
 require 'support/helpers'
-require 'support/wait_for_ajax'
 require 'devise'
 
 ENV['RAILS_ENV'] ||= 'test'

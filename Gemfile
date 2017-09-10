@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
+  gem 'transactional_capybara'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl_rails', '~> 4.8'
