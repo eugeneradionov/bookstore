@@ -31,15 +31,21 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    xit 'destroys the requested review' do
-      review = Review.create! valid_attributes
+    it 'destroys the requested review' do
+      review = Review.new valid_attributes
+      review.review_status = @review_status
+      review.save
+
       expect do
         delete :destroy, params: { id: review.to_param }
       end.to change(Review, :count).by(-1)
     end
 
-    xit 'redirects to the reviews list' do
-      review = Review.create! valid_attributes
+    it 'redirects to the reviews list' do
+      review = Review.new valid_attributes
+      review.review_status = @review_status
+      review.save
+
       delete :destroy, params: { id: review.to_param }
       expect(response).to redirect_to(reviews_url)
     end
