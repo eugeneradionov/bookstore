@@ -6,16 +6,18 @@ class Ability
     if user.is_a? Admin
       can :manage, :all
     elsif user.is_a? User
-      # if user.new_record or not to authorize guest user
       can :read, Book
       can :manage, Checkout
       can [:read, :update], Cart, user_id: user.id
-      can [:read, :create, :update], Order, user_id: user.id
-      can [:create], ShippingAddress
-      can [:create], BillingAddress
-      can [:create], Payment
-      can :create, Review
-      can :destroy, Review, user_id: user.id
+
+      unless user.new_record?
+        can [:read, :create, :update], Order, user_id: user.id
+        can [:create], ShippingAddress
+        can [:create], BillingAddress
+        can [:create], Payment
+        can :create, Review
+        can :destroy, Review, user_id: user.id
+      end
     end
 
     # The first argument to `can` is the action you are giving the user
