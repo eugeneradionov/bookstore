@@ -70,7 +70,7 @@ class CheckoutController < ApplicationController
     @user = @order.user
     @shipping_address = @order.shipping_address
     delivery = @order.delivery
-    @checkout = Checkout.new(delivery_method: delivery)
+    @checkout = Checkout.new(delivery_method: delivery, cart: cart)
 
     session[:current_step] = nil
     render '_checkout_complete'
