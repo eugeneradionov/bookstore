@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  include RegistrationLoginCartSetup
   skip_before_action :verify_authenticity_token, only: :create
 
   # GET /resource/sign_up
@@ -12,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.cart = Cart.find(session[:cart_id]) if session[:cart_id]
+    current_user.cart = setup_cart
   end
 
   # GET /resource/edit

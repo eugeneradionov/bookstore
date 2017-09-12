@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  include RegistrationLoginCartSetup
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -10,12 +11,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    session_cart = Cart.find(session[:cart_id]) if session[:cart_id]
-    current_user.cart = if session_cart&.empty?
-                          current_user.cart
-                        else
-                          session_cart
-                        end
+    current_user.cart = setup_cart
   end
 
   # DELETE /resource/sign_out
