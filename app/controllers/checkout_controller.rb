@@ -1,8 +1,10 @@
 class CheckoutController < ApplicationController
+  include RegistrationLoginCartSetup
+
   attr_writer :current_step
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
-  before_action :redirect_to_login_unless_user_logged_in, except: :login
+  before_action :redirect_to_login_unless_user_logged_in, except: [:login, :sign_up]
   before_action :redirect_to_catalog_if_cart_empty, except: :complete
   before_action :set_order_cart
   authorize_resource
@@ -77,7 +79,27 @@ class CheckoutController < ApplicationController
   end
 
   def login
-    render 'checkout/login'
+    @user = User.new
+    render 'login'
+  end
+
+  def sign_up
+    password = "#{Devise.friendly_token[0, 8]}Q2"
+    @user = User.new(email: user_params[:email], password: password)
+
+    respond_to do |format|
+      if @user.save
+        # TODO: send an email!
+        sign_in(:user, @user)
+        current_user.cart = setup_cart
+
+        format.html { redirect_to checkout_path, notice: "Email with your password has been sent to #{@user.email}" }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render 'login' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -153,6 +175,10 @@ class CheckoutController < ApplicationController
                   :billing_address, :billing_city, :billing_zip,
                   :billing_country, :billing_phone, :delivery_method,
                   :card_number, :cvv, :mm_yy, :use_billing_address, :current_step)
+  end
+
+  def user_params
+    params.require(:user).permit(:email)
   end
 
   def set_order_cart

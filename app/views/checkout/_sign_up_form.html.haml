@@ -4,4 +4,18 @@
     %i.fa.fa-facebook-official
   %p.general-login-text or
 
-= render 'devise/shared/registration_form'
+= form_for(resource, html: {class: 'general-form'}, as: resource_name, url: 'sign_up') do |f|
+  %p.font-16 Quick register
+  %p.general-info-text Password will be send to your email
+
+  - if @user.errors[:email].empty?
+    .form-group.mb-30
+      = f.label :email, class: 'control-label input-label'
+      = f.email_field :email, autofocus: true, id: 'email', class: 'form-control', placeholder: 'Enter Email'
+  - else
+    .form-group.has-error.mb-30
+      = f.label :email, class: 'control-label input-label'
+      = f.email_field :email, autofocus: true, id: 'email', class: 'form-control borders-red', placeholder: 'Enter Email'
+      %span.help-block= error_message_for(@user, :email)
+  .text-center
+    = f.submit 'Sign up', class: 'btn btn-default mb-20'
