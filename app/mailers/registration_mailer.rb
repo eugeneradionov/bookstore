@@ -1,8 +1,9 @@
 class RegistrationMailer < ApplicationMailer
   default from: 'noreply@mg.bookstoresupport.com'
 
-  def checkout_registration_email(record)
+  def checkout_registration_email(record, password)
     @record = record
-    mail to: 'eugene.radionov@gmail.com', subject: 'You have registered successful'
+    @password = password
+    mail to: @record.email, subject: 'You have registered successful'
   end
 end
