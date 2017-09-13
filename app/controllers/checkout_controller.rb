@@ -89,7 +89,7 @@ class CheckoutController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        # TODO: send an email!
+        RegistrationMailer.create_checkout_registration_email(@user).deliver_later
         sign_in(:user, @user)
         current_user.cart = setup_cart
 
