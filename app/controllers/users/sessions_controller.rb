@@ -19,6 +19,22 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
+  def after_sign_in_path_for(resource)
+    if request.referer == checkout_login_url
+      checkout_path
+    else
+      root_path
+    end
+  end
+
+  def after_sign_up_path_for(resource)
+    if request.referer == checkout_login_url
+      checkout_path
+    else
+      root_path
+    end
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
