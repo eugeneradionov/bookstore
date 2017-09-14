@@ -43,7 +43,8 @@ gem 'nokogiri', '~> 1.8'
 gem 'country_select', '~> 3.1'
 gem 'rails_admin', '~> 1.2'
 gem 'ffaker', '~> 2.6'
-
+gem 'wicked', '~> 1.3', '>= 1.3.2'
+gem 'aasm', '~> 4.12', '>= 4.12.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

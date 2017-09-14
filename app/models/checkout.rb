@@ -1,5 +1,21 @@
 class Checkout
   include ActiveModel::Model
+  include AASM
+
+  aasm do
+    state :address, initial: true
+    state :delivery
+    state :payment
+    state :confirm
+    state :complete
+
+    event :next_step do
+      transitions from: :address, to: :delivery
+      transitions from: :delivery, to: :payment
+      transitions from: :payment, to: :confirm
+      transitions from: :confirm, to: :complete
+    end
+  end
 
   attr_writer :current_step
   attr_accessor :cart, :user, :order

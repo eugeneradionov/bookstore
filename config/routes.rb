@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   get 'checkout', to: 'checkout#new'
   post 'checkout', to: 'checkout#create'
+  get 'checkout/:id', to: 'checkout#show'
   post 'checkouts', to: 'checkout#create'
   get 'checkout/complete', to: 'checkout#complete'
   get 'checkout/login', to: 'checkout#login'

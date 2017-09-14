@@ -1,5 +1,6 @@
 class CheckoutController < ApplicationController
   include RegistrationLoginCartSetup
+  include Wicked::Wizard
 
   attr_writer :current_step
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
@@ -9,14 +10,34 @@ class CheckoutController < ApplicationController
   before_action :set_order_cart
   authorize_resource
 
+  steps :address, :delivery, :payment, :confirm, :complete
+
   def new
+    # session[:checkout_params] ||= {}
+    # initialize_checkout
+    # initialize_cart
+
+    # current_step = params[:current_step] || session[:current_step]
+    # set_session_current_step(current_step)
+    # @checkout.current_step = current_step
+
+    set_shipping_and_billing_address
+
+    # if session[:order_id]
+    #   @order = Order.find(session[:order_id])
+    #   @user = @order.user
+    # end
+    # render_wizard
+  end
+
+  def show
     session[:checkout_params] ||= {}
     initialize_checkout
     initialize_cart
 
-    current_step = params[:current_step] || session[:current_step]
-    set_session_current_step(current_step)
-    @checkout.current_step = current_step
+    # current_step = params[:current_step] || session[:current_step]
+    # set_session_current_step(current_step)
+    # @checkout.current_step = current_step
 
     set_shipping_and_billing_address
 
@@ -24,6 +45,7 @@ class CheckoutController < ApplicationController
       @order = Order.find(session[:order_id])
       @user = @order.user
     end
+    render_wizard
   end
 
   def create
@@ -168,7 +190,7 @@ class CheckoutController < ApplicationController
 
   def checkout_params
     params.fetch(:checkout, {})
-          .permit(:shipping_first_name, :shipping_last_name,
+          .permit(:id, :shipping_first_name, :shipping_last_name,
                   :shipping_address, :shipping_city, :shipping_zip,
                   :shipping_country, :shipping_phone,
                   :billing_first_name, :billing_last_name,
