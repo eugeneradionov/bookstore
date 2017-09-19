@@ -44,6 +44,9 @@ gem 'nokogiri', '~> 1.8'
 gem 'country_select', '~> 3.1'
 gem 'rails_admin', '~> 1.2'
 gem 'ffaker', '~> 2.6'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
