@@ -1,7 +1,7 @@
 - @order_items.each do |order_item|
   .general-cart-item.divider-lg
     .general-img-wrap-table
-      %img.cart-img-shadow{src: order_item.book.cover_url, alt: 'Soem cool Book'}
+      %img.cart-img-shadow{src: order_item.book.cover_url, alt: 'Some cool Book'}
     %p.title= order_item.book.title
     %P.in-grey-600.fw-300= book_first_sentence(order_item.book)
     %table.table
