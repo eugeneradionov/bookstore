@@ -32,9 +32,9 @@ class Setting
                                                       country: shipping_country,
                                                       phone: shipping_phone.strip)
 
-      user_info = UserInfo.find_or_create_by!(user_id: user.id)
-      user_info.update!(shipping_address_id: shipping_a.id,
-                        billing_address_id: billing_a.id)
+      UserInfo.find_or_create_by!(user_id: user.id,
+                                  shipping_address: shipping_a,
+                                  billing_address: billing_a)
     end
   end
 
