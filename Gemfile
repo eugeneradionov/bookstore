@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -45,6 +46,10 @@ gem 'rails_admin', '~> 1.2'
 gem 'ffaker', '~> 2.6'
 gem 'wicked', '~> 1.3', '>= 1.3.2'
 gem 'aasm', '~> 4.12', '>= 4.12.2'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
+gem 'mini_magick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -18,7 +18,7 @@ book = Book.new(title: 'Android Programming for Beginners',
 book.authors << [Author.find_or_create_by(name: 'John Horton')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Packed with trade secrets, this second edition is your one-stop solution to creating websites that will provide the best experience for your users. We cover six popular, real-world examples, where each project teaches you about the various functionalities of Bootstrap 4 and their implementation.
@@ -31,7 +31,7 @@ book.authors << [Author.find_or_create_by(name: 'Bass Jobsen'),
                  Author.find_or_create_by(name: 'Ian Whitley')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Node.js is the most popular framework to create server-side applications today. Be it web, desktop, or mobile, Node.js comes to your rescue to create stunning real-time applications. Node.js 6.x Blueprints will teach you to build these types of projects in an easy-to-understand manner.
@@ -44,7 +44,7 @@ book = Book.new(title: 'Node.js 6.x Blueprints',
 book.authors << [Author.find_or_create_by(name: 'Fernando Monteiro')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Laravel is a prominent member of a new generation of web frameworks. It is one of the most popular PHP frameworks and is also free and an open source. Laravel 5 is a substantial upgrade with a lot of new toys, at the same time retaining the features that made Laravel wildly successful. It comes with plenty of architectural as well as design-based changes.
@@ -56,7 +56,7 @@ book = Book.new(title: 'Laravel 5.x Cookbook',
 book.authors << [Author.find_or_create_by(name: 'Alfred Nutile')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Responsive web design (RWD) is a web design approach aimed at crafting sites to provide an optimal viewing and interaction experience—providing easy reading and navigation with minimum resizing, panning, and scrolling—and all of this across a wide range of devices from desktop computer monitors to mobile phones. Responsive web design is becoming more important as the amount of mobile traffic now accounts for more than half of the Internet’s total traffic.
@@ -70,7 +70,7 @@ book.authors << [Author.find_or_create_by(name: 'Gaurav Gupta'),
                  Author.find_or_create_by(name: 'Asoj Talesra')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'React has taken the web development world by storm, and it is only natural that the unique architecture and its ecosystem of third-party support be applied to native application development. This book will take you through the basics of React Native development all the way through to some more advanced components.
@@ -83,7 +83,7 @@ book.authors << [Author.find_or_create_by(name: 'Crysfel Villa'),
                  Author.find_or_create_by(name: 'Stan Bershadskiy')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Vue.js is an open source JavaScript library for building modern, interactive web applications. With a rapidly growing community and a strong ecosystem, Vue.js makes developing complex single page applications a breeze. Its component-based approach, intuitive API, blazing fast core, and compact size make Vue.js a great solution to craft your next front-end application.
@@ -96,7 +96,7 @@ book = Book.new(title: 'Vue.js 2 Cookbook',
 book.authors << [Author.find_or_create_by(name: 'Andrea Passaglia')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'Angular 2 will help you build faster, more efficient, and more flexible cross-platform applications. Angular 2 is known for taking the pain out of JavaScript development, and enabling more organized, readable, and testable code.
@@ -109,7 +109,7 @@ book.authors << [Author.find_or_create_by(name: 'Chandermani Arora'),
                  Author.find_or_create_by(name: 'Kevin Hennessy')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "If you are a web developer and want to create web applications that look good, are efficient, have rich user interfaces, and integrate seamlessly with any backend using AJAX, then this book is the ideal match for you. We’ll show you how you can integrate jQuery 3.0 into your web pages, avoid complex JavaScript code, create brilliant animation effects for your web applications, and create a flawless app.
@@ -124,7 +124,7 @@ book.authors << [Author.find_or_create_by(name: 'Adam Boduch'),
                  Author.find_or_create_by(name: 'Karl Swedberg')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Two of the most popular frontend frameworks, Angular and Bootstrap, have undergone a major overhaul to embrace emerging web technologies so that developers can build cutting-edge web applications.
@@ -138,7 +138,7 @@ book.authors << [Author.find_or_create_by(name: 'Sergey Akopkokhyants'),
                  Author.find_or_create_by(name: 'Stephen Radford')]
 book.categories << [Category.find_by(name: 'Web Design'), Category.find_by(name: 'Web Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = 'The Android OS has the largest installation base of any operating system in the world; there has never been a better time to learn Android development to write your own applications, or to make your own contributions to the open source community!
@@ -153,7 +153,7 @@ book.authors << [Author.find_or_create_by(name: 'Rick Boyer'),
                  Author.find_or_create_by(name: 'Asoj Talesra')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 description = "Updated for Xcode 8, Swift 3, and iOS 10, iOS Programming: The Big Nerd Ranch Guide leads you through the essential concepts, tools, and techniques for developing iOS applications. After completing this book, you will have the know-how and the confidence you need to tackle iOS projects of your own. Based on Big Nerd Ranch's popular iOS training and its well-tested materials and methodology, this bestselling guide teaches iOS concepts and coding in tandem. The result is instruction that is relevant and useful.
@@ -165,7 +165,7 @@ book.authors << [Author.find_or_create_by(name: 'Matt Mathias'),
                  Author.find_or_create_by(name: 'John Gallagher')]
 book.categories << [Category.find_by(name: 'Mobile Development')]
 # book.image_urls << [ImageUrl.create(url: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg')]
-book.cover_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
+book.remote_cover_url_url = 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg'
 book.save!
 
 `rake books_parser:parse`

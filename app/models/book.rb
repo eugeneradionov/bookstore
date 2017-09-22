@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   has_many :order_items
   has_many :reviews
 
+  mount_uploader :cover_url, ImageUrlUploader
+
   before_destroy :ensure_no_order_items
 
   validates :title, uniqueness: true

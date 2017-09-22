@@ -30,7 +30,7 @@
   .row.mb-20
     .col-sm-6
       .visible-xs
-        %p.general-order-number.mb-0= "Order ##{@order.id}"
+        %p.general-order-number.mb-0= "Order ##{order_id(@order)}"
         %p.general-address.mb-30= order_date(@order)
       %p.general-address
         = complete_step_full_name
@@ -43,7 +43,7 @@
         %br
         = complete_step_phone
     .col-sm-6.hidden-xs.text-right
-      %p.general-order-number.mb-0= "Order ##{@order.id}"
+      %p.general-order-number.mb-0= "Order ##{order_id(@order)}"
       %p.general-address.mb-30= order_date(@order)
   = render 'confirm_cart'
   .text-center.general-text-right

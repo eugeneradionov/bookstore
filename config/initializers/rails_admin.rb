@@ -82,7 +82,7 @@ RailsAdmin.config do |config|
       field :height
       field :width
       field :depth
-      field :cover_url
+      field :cover_url, :carrierwave
       field :authors
       field :categories
       field :image_urls
@@ -162,7 +162,7 @@ RailsAdmin.config do |config|
     end
 
     edit do
-      field :url
+      field :url, :carrierwave
     end
   end
 

@@ -59,4 +59,8 @@ module OrdersHelper
   def order_mm_yy
     @payment.mm_yy
   end
+
+  def order_id(order)
+    order.id.to_s.rjust(9, '0').rjust(10, 'R')
+  end
 end
