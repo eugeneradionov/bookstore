@@ -1,9 +1,9 @@
 class Order < ApplicationRecord
-  belongs_to :delivery
-  belongs_to :shipping_address
-  belongs_to :billing_address
+  belongs_to :delivery, optional: true
+  belongs_to :shipping_address, optional: true
+  belongs_to :billing_address, optional: true
   belongs_to :user
-  belongs_to :payment
+  belongs_to :payment, optional: true
   belongs_to :order_status
   has_many :order_items
 
@@ -12,8 +12,6 @@ class Order < ApplicationRecord
   scope :waiting_for_processing, -> { where(order_status: OrderStatus.find_by(status: 'Waiting for Processing')) }
   scope :in_progress, -> { where(order_status: OrderStatus.find_by(status: 'In Progress')) }
   scope :canceled, -> { where(order_status: OrderStatus.find_by(status: 'Canceled')) }
-
-  validates :shipping_address_id, :billing_address_id, presence: true
 
   def order_total
     discount_amount = discount || 0
@@ -31,5 +29,9 @@ class Order < ApplicationRecord
 
   def status
     order_status.status
+  end
+
+  def in_progress?
+    order_status.in_progress?
   end
 end

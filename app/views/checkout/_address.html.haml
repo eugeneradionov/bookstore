@@ -35,7 +35,7 @@
   .col-md-5.col-md-offset-1.mb-60
     .visible-xs.visible-sm
       %h3.general-subtitle Shipping Address
-    - if (@checkout.use_billing_address == '0') || !@checkout.use_billing_address
+    - unless @checkout.use_billing_address?
       #shipping_address_form
         = render 'checkout/shipping_address_form', f: f
     .form-group.checkbox

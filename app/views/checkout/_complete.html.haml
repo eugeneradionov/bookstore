@@ -26,7 +26,7 @@
       %span.step-text.hidden-xs Complete
   .text-center.mb-40
     %h3.general-subtitle Thank You for your Order!
-    %p.fw-300= "An order confirmation has been has been sent to #{@user.email}"
+    %p.fw-300= "An order confirmation has been has been sent to #{@order.user.email}"
   .row.mb-20
     .col-sm-6
       .visible-xs
@@ -34,7 +34,6 @@
         %p.general-address.mb-30= order_date(@order)
       %p.general-address
         = complete_step_full_name
-        %span.general-edit edit
         %br
         = complete_step_address
         %br

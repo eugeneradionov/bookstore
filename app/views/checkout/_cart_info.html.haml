@@ -3,12 +3,12 @@
     %p.font-16 Item Total:
   %td
     %p.font-16= number_to_euro(@order_cart.order_total)
-  - if @checkout.delivery
+  - if @checkout.delivery_method
     %tr
       %td
         %p.font-16 Shipping:
       %td
-        %p.font-16= delivery_price(@checkout.delivery)
+        %p.font-16= delivery_price(@checkout.delivery_method)
 
   - if @checkout.cart.discount
     %tr

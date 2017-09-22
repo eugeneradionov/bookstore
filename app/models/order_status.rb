@@ -6,4 +6,8 @@ class OrderStatus < ApplicationRecord
   rails_admin do
     object_label_method :status
   end
+
+  def in_progress?
+    status == 'In Progress'
+  end
 end

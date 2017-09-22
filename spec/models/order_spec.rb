@@ -8,8 +8,6 @@ RSpec.describe Order, type: :model do
   it { is_expected.to belong_to(:payment) }
   it { is_expected.to belong_to(:order_status) }
   it { is_expected.to have_many(:order_items) }
-  it { is_expected.to validate_presence_of(:shipping_address_id) }
-  it { is_expected.to validate_presence_of(:billing_address_id) }
 
   context 'scope validations' do
     it 'should have :in_delivery scope' do
