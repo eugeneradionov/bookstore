@@ -1,103 +1,103 @@
 module CheckoutHelper
   def complete_step_full_name
-    "#{@shipping_address.first_name} #{@shipping_address.last_name}"
+    "#{@shipping_a.first_name} #{@shipping_a.last_name}"
   end
 
   def complete_step_address
-    @shipping_address.address
+    @shipping_a.address
   end
 
   def complete_step_city_zip
-    "#{@shipping_address.city} #{@shipping_address.zip}"
+    "#{@shipping_a.city} #{@shipping_a.zip}"
   end
 
   def complete_step_country
-    country_name(@shipping_address.country)
+    country_name(@shipping_a.country)
   end
 
   def complete_step_phone
-    @shipping_address.phone
+    @shipping_a.phone
   end
 
   def checkout_shipping_full_name
-    "#{session[:checkout_params]['shipping_first_name']} #{session[:checkout_params]['shipping_last_name']}"
+    "#{@shipping_a.first_name} #{@shipping_a.last_name}"
   end
 
   def checkout_shipping_first_name
-    session[:checkout_params]['shipping_first_name'] || @shipping_a.first_name
+    @shipping_a.first_name
   end
 
   def checkout_shipping_last_name
-    session[:checkout_params]['shipping_last_name'] || @shipping_a.last_name
+    @shipping_a.last_name
   end
 
   def checkout_shipping_address
-    session[:checkout_params]['shipping_address'] || @shipping_a.address
+    @shipping_a.address
   end
 
   def checkout_shipping_city_zip
-    "#{session[:checkout_params]['shipping_city']} #{session[:checkout_params]['shipping_zip']}"
+    "#{@shipping_a.city} #{@shipping_a.zip}"
   end
 
   def checkout_shipping_city
-    session[:checkout_params]['shipping_city'] || @shipping_a.city
+    @shipping_a.city
   end
 
   def checkout_shipping_zip
-    session[:checkout_params]['shipping_zip'] || @shipping_a.zip
+    @shipping_a.zip
   end
 
   def checkout_shipping_country
-    session[:checkout_params]['shipping_country'] || @shipping_a.country
+    @shipping_a.country
   end
 
   def checkout_shipping_phone
-    session[:checkout_params]['shipping_phone'] || @shipping_a.phone
+    @shipping_a.phone
   end
-
   def checkout_billing_full_name
-    "#{session[:checkout_params]['billing_first_name']} #{session[:checkout_params]['billing_last_name']}"
+    "#{@billing_a.first_name} #{@billing_a.last_name}"
   end
 
   def checkout_billing_first_name
-    session[:checkout_params]['billing_first_name'] || @billing_a.first_name
+    @billing_a.first_name
   end
 
   def checkout_billing_last_name
-    session[:checkout_params]['billing_last_name'] || @billing_a.last_name
+    @billing_a.last_name
   end
 
   def checkout_billing_address
-    session[:checkout_params]['billing_address'] || @billing_a.address
+    @billing_a.address
   end
 
   def checkout_billing_city_zip
-    "#{session[:checkout_params]['billing_city']} #{session[:checkout_params]['billing_zip']}"
+    "#{@billing_a.city} #{@billing_a.zip}"
   end
 
   def checkout_billing_city
-    session[:checkout_params]['billing_city'] || @billing_a.city
+    @billing_a.city
   end
 
   def checkout_billing_zip
-    session[:checkout_params]['billing_zip'] || @billing_a.zip
+    @billing_a.zip
   end
 
   def checkout_billing_country
-    session[:checkout_params]['billing_country'] || @billing_a.country
+    @billing_a.country
   end
 
   def checkout_billing_phone
-    session[:checkout_params]['billing_phone'] || @billing_a.phone
+    @billing_a.phone
   end
 
-  def card_number
-    last_four = session[:checkout_params]['card_number'].split(//).last(4).join
+  def card_number(payment)
+    last_four = payment.card_number.split(//).last(4).join
     "**** **** **** #{last_four}"
   end
 
-  def mm_yy
-    session[:checkout_params]['mm_yy']
+  def mm_yy(payment)
+    # session[:checkout_params]['mm_yy']
+    payment.mm_yy
   end
 
   def delivery_days(delivery)

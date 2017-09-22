@@ -13,6 +13,8 @@ RSpec.describe 'Checkout', type: :feature do
 
       @user.cart = Cart.create(user_id: @user.id)
       OrderItem.create(book_id: @book.id, cart_id: @user.cart.id)
+      FactoryGirl.create(:order_status, status: 'In Progress')
+      FactoryGirl.create(:order_status, status: 'Waiting for Processing')
       visit checkout_path
 
       find_field('checkout[billing_first_name]').set(FFaker::Name.first_name)

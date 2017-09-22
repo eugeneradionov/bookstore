@@ -28,12 +28,12 @@
   .col-sm-3
     %h3.general-subtitle Shipments
     %p.general-address
-      = @checkout.delivery.method
+      = @checkout.delivery_method.method
       = link_to 'edit', checkout_path(current_step: 'delivery'), class: 'general-edit'
   .col-sm-3
     %h3.general-subtitle Payment Information
     %p.general-address
-      = card_number
+      = card_number(@order.payment)
       = link_to 'edit', checkout_path(current_step: 'payment'), class: 'general-edit'
       %br
-      = mm_yy
+      = mm_yy(@order.payment)
