@@ -20,7 +20,7 @@ RSpec.describe 'Book Page', type: :feature do
     scenario 'Writing a review' do
       within('#new_review') do
         fill_in 'Title', with: 'test title'
-        fill_in 'Rating', with: '3'
+        find_field('review[rating]').find(:xpath, 'option[3]').select_option
         fill_in 'Text', with: FFaker::Lorem.paragraph
       end
       click_button 'Add Review'
