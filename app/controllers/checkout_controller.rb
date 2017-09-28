@@ -90,13 +90,13 @@ class CheckoutController < ApplicationController
 
       shipping_a = if @checkout.use_billing_address?
                      ShippingAddress.find_or_create_by(
-                         first_name: @checkout.billing_first_name.strip,
-                         last_name: @checkout.billing_last_name.strip,
-                         address: @checkout.billing_address.strip,
-                         city: @checkout.billing_city.strip,
-                         zip: @checkout.billing_zip.strip,
-                         country: @checkout.billing_country,
-                         phone: @checkout.billing_phone.strip)
+                       first_name: @checkout.billing_first_name.strip,
+                       last_name: @checkout.billing_last_name.strip,
+                       address: @checkout.billing_address.strip,
+                       city: @checkout.billing_city.strip,
+                       zip: @checkout.billing_zip.strip,
+                       country: @checkout.billing_country,
+                       phone: @checkout.billing_phone.strip)
                    else
                      ShippingAddress.find_or_create_by(
                       first_name: @checkout.shipping_first_name.strip,
