@@ -9,9 +9,10 @@ module BooksHelper
 
   def book_gallery_image(id)
     begin
-      @book.image_urls[id].url
+      src = @book.image_urls[id].url
+      "<div class= \"img-link\"><img src= \"#{src}\"></div>"
     rescue NoMethodError
-      @book.cover_url
+      ''
     end
   end
 

@@ -2,9 +2,6 @@
   .mb-20
     %img.img-responsive{src: @book.cover_url}
   .images.clearfix
-    .img-link
-      %img{src: book_gallery_image(0)}
-    .img-link
-      %img{src: book_gallery_image(1)}
-    .img-link
-      %img{src: book_gallery_image(2)}
+    = book_gallery_image(0)
+    = book_gallery_image(1)
+    = book_gallery_image(2)
