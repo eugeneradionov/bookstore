@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: [:destroy]
+  before_action :set_order_item, only: [:update, :destroy]
 
   # POST /order_items
   # POST /order_items.json
@@ -18,6 +18,27 @@ class OrderItemsController < ApplicationController
         format.js
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # PUT /order_items/1
+  def update
+    quantity = order_item_params[:quantity]
+
+    case quantity
+    when 'inc'
+      @order_item.quantity += 1
+    when 'dec'
+      @order_item.quantity -= 1
+    else
+      @order_item.quantity = quantity
+    end
+
+    @order_item.save
+
+    respond_to do |format|
+      format.html { redirect_to(request.referrer || root_path) }
+      format.js { render 'cart_summary' }
     end
   end
 

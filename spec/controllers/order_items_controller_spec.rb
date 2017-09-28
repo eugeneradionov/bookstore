@@ -30,7 +30,7 @@ RSpec.describe OrderItemsController, type: :controller do
   # OrderItem. As you add validations to OrderItem, be sure to
   # adjust the attributes here as well.
 
-  before do
+  before(:each) do
     @book = FactoryGirl.create(:book)
     @cart = FactoryGirl.create(:cart)
   end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :reviews, only: [:create, :destroy]
-  resources :order_items, only: [:create, :destroy]
+  resources :order_items, only: [:create, :update, :destroy]
 
   root 'home#index'
 

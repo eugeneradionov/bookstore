@@ -1,6 +1,8 @@
 .visible-xs
-  = render 'carts/visible_xs_order_items'
+  = render 'visible_xs_order_items'
 .hidden-xs
-  = render 'carts/hidden_xs_order_items'
+  = render 'hidden_xs_order_items'
 .general-order-wrap
-  = render 'carts/summary'
+  .row
+    = render 'coupon'
+    = render 'summary'

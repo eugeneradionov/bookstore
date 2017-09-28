@@ -15,6 +15,7 @@ class Ability
         can [:create, :update], ShippingAddress
         can [:create, :update], BillingAddress
         can [:create, :update], UserInfo
+        can :update, OrderItem
         can [:create], Payment
         can :create, Review
         can :destroy, Review, user_id: user.id

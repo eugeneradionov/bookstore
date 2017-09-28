@@ -23,7 +23,7 @@ class CartsController < ApplicationController
 
   def set_coupon_to_params
     coupon = Coupon.find_by(code: params[:cart][:discount])
-    if coupon && coupon.active
+    if coupon&.active
       params[:cart][:discount] = coupon.discount
       coupon.active = false
       coupon.save
