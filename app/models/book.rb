@@ -15,6 +15,17 @@ class Book < ApplicationRecord
 
   paginates_per 12
 
+  def self.categories_and_count
+    sql = 'SELECT c.name, count(b.id)
+    FROM books as b
+    INNER JOIN books_categories as bc
+    ON b.id = bc.book_id
+    INNER JOIN categories as c
+    ON c.id = bc.category_id
+    GROUP BY c.id'
+    ActiveRecord::Base.connection.execute(sql)
+  end
+
   def ensure_no_order_items
     if order_items.empty?
       return true

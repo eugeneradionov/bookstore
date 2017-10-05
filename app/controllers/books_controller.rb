@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @books = filter_by_category
     @books = sort_by_criteria_and_direction
 
-    @categories_and_count = categories_and_count
+    @categories_and_count = Book.categories_and_count
 
     respond_to do |format|
       format.html { @books }
@@ -27,17 +27,6 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :description, :publication_year,
                                  :price, :height, :weight, :depth, :sort,
                                  :direction, author_ids: [])
-  end
-
-  def categories_and_count
-    sql = 'SELECT c.name, count(b.id)
-    FROM books as b
-    INNER JOIN books_categories as bc
-    ON b.id = bc.book_id
-    INNER JOIN categories as c
-    ON c.id = bc.category_id
-    GROUP BY c.id'
-    ActiveRecord::Base.connection.execute(sql)
   end
 
   def sort_by_criteria_and_direction
