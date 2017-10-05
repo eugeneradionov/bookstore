@@ -1,20 +1,19 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :index]
 
   load_resource only: :show
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = @user.orders
+    @orders = current_user.orders
     @orders = filter_by_status
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-    if @user.orders.exists?(id: params[:id])
+    if current_user.orders.exists?(id: params[:id])
       @shipping_a = @order.shipping_address
       @billing_a = @order.billing_address
       @delivery = @order.delivery
@@ -27,10 +26,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = current_user
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
