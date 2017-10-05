@@ -11,7 +11,7 @@ class CheckoutController < ApplicationController
   before_action :initialize_checkout, except: [:login, :sign_up]
   before_action :initialize_cart, except: [:login, :sign_up]
   before_action :set_order_cart, except: [:login, :sign_up]
-  authorize_resource
+  authorize_resource except: :sign_up
 
   def new
     @order.order_items = @cart.order_items
@@ -61,8 +61,8 @@ class CheckoutController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        RegistrationMailer.checkout_registration_email(@user, password).deliver_later
         sign_in(:user, @user)
+        RegistrationMailer.checkout_registration_email(@user, password).deliver_later
         current_user.cart = setup_cart
 
         format.html { redirect_to checkout_path, notice: "Email with your password has been sent to #{@user.email}" }
