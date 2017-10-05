@@ -48,11 +48,11 @@ RailsAdmin.config do |config|
 
   config.model Book do
     list do
-      # field :cover_url do # TODO: thumbnail
-      #   formatted_value do
-      #     bindings[:view].tag(:img, { src: bindings[:object].cover_url }) << value
-      #   end
-      # end
+      field :cover_url do
+        formatted_value do
+          bindings[:view].tag(:img, { src: bindings[:object].cover_url.url(:thumb) }) << value
+        end
+      end
       field :title
       field :authors
       field :categories
@@ -168,9 +168,9 @@ RailsAdmin.config do |config|
 
   config.model Payment do
     list do
-      field :card_number # TODO: is it secure to show full card number?
-      field :name_on_card # TODO: --//--//--
-      field :mm_yy # TODO: --//--//--
+      field :card_number
+      field :name_on_card
+      field :mm_yy
     end
 
     show do
