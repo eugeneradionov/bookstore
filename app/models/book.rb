@@ -15,6 +15,18 @@ class Book < ApplicationRecord
 
   paginates_per 12
 
+  def self.bestsellers
+    books_orders_count = OrderItem.where('order_id IS NOT NULL').group(:book_id)
+                             .order('sum("order_items"."quantity") DESC')
+                             .limit(4).count
+
+    bestsellers = []
+    books_orders_count.each_key do |key|
+      bestsellers << Book.find(key)
+    end
+    bestsellers
+  end
+
   def self.categories_and_count
     sql = 'SELECT c.name, count(b.id)
     FROM books as b
