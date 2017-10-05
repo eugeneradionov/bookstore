@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  helper_method :book_first_sentence
 
   def index
     @books = Book.order(created_at: :desc).limit(3)
@@ -9,10 +8,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-  def book_first_sentence(book)
-    book.description[/^(.*?)[.?!]/]
-  end
 
   def bestsellers
     books_orders_count = OrderItem.where('order_id IS NOT NULL').group(:book_id)
