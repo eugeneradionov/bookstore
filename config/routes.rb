@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: { sessions: 'admins/sessions' }
+  devise_for :admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :reviews, only: [:create, :destroy]
