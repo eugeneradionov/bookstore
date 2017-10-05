@@ -7,10 +7,10 @@ class CheckoutController < ApplicationController
 
   before_action :redirect_to_login_unless_user_logged_in, except: [:login, :sign_up]
   before_action :redirect_to_catalog_if_cart_empty, except: :complete
-  before_action :initialize_order
-  before_action :initialize_checkout
-  before_action :initialize_cart
-  before_action :set_order_cart
+  before_action :initialize_order, except: [:login, :sign_up]
+  before_action :initialize_checkout, except: [:login, :sign_up]
+  before_action :initialize_cart, except: [:login, :sign_up]
+  before_action :set_order_cart, except: [:login, :sign_up]
   authorize_resource
 
   def new
