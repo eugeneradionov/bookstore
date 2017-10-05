@@ -10,10 +10,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review.book, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
       else
         format.html { redirect_to request.referer }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -24,7 +22,6 @@ class ReviewsController < ApplicationController
     @review.destroy
     respond_to do |format|
       format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

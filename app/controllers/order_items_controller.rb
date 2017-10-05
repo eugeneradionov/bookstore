@@ -12,11 +12,9 @@ class OrderItemsController < ApplicationController
       if @order_item.save
         format.html { redirect_to(request.referrer || root_path)}
         format.js
-        format.json { render :show, status: :created, location: @order_item }
       else
         format.html { redirect_to(request.referrer || root_path) }
         format.js
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +46,6 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     respond_to do |format|
       format.html { redirect_to cart_path, notice: 'Order item was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

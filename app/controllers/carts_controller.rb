@@ -14,7 +14,6 @@ class CartsController < ApplicationController
         format.html { redirect_to cart_path, notice: 'Book was successfully updated.' }
       else
         format.html { redirect_to cart_path, notice: '' }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
   end
