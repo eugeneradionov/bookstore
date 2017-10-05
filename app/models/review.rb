@@ -3,6 +3,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :review_status
   validates_presence_of :title, :text
+  validates :title, length: { maximum: 80 }
+  validates :text, length: { maximum: 500 }
   validates :rating, inclusion: { in: 0..5,
                                   message: 'is not in 0-5' }
 
