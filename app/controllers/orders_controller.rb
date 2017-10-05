@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show]
   before_action :set_user, only: [:show, :index]
+
+  load_resource only: :show
 
   # GET /orders
   # GET /orders.json
@@ -26,11 +27,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_order
-    @order = Order.find(params[:id])
-  end
 
   def set_user
     @user = current_user
