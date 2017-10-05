@@ -47,8 +47,8 @@ gem 'ffaker', '~> 2.6'
 gem 'wicked', '~> 1.3', '>= 1.3.2'
 gem 'aasm', '~> 4.12', '>= 4.12.2'
 gem 'carrierwave', '~> 1.0'
-gem 'fog-aws'
-gem 'mini_magick'
+gem 'fog-aws', '~> 1.4', '>= 1.4.1'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -59,12 +59,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
-  gem 'transactional_capybara'
-  gem 'selenium-webdriver'
+  gem 'transactional_capybara', '~> 0.2.0'
+  gem 'selenium-webdriver', '~> 3.6'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
 end
 
 group :development do
@@ -72,7 +72,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.0', '>= 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'html2haml', '~> 2.2'
 end
