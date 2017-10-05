@@ -66,10 +66,8 @@ class CheckoutController < ApplicationController
         current_user.cart = setup_cart
 
         format.html { redirect_to checkout_path, notice: "Email with your password has been sent to #{@user.email}" }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render 'login' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
