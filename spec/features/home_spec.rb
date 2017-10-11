@@ -26,7 +26,7 @@ RSpec.describe 'Home Page', type: :feature do
       expect(page).to have_current_path('/catalog')
     end
 
-    scenario 'Buying latest book' do
+    scenario 'Can buy latest book' do
       click_button('Buy Now')
       expect(find('.hidden-xs .shop-quantity').text).to eq('1')
     end

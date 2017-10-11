@@ -29,17 +29,9 @@ RSpec.describe 'Cart Page', type: :feature do
       expect(page).to have_content('Your cart is empty')
     end
 
-    # scenario 'Add coupon ot cart' do
-    #   Coupon.create(code: 'qwerty', active: true, discount: '10')
-    #   fill_in 'cart_discount', with: 'qwerty'
-    #   click_button 'Update cart'
-    #   expect(@user.cart.discount).to eq(10)
-    # end
-
     scenario 'Checkout' do
       find('.text-center .hidden-xs').click
       expect(current_path).to eq(checkout_path)
     end
-
   end
 end
