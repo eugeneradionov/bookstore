@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :billing_address do
-    first_name 'MyString'
-    last_name 'MyString'
-    address 'MyString'
-    city 'MyString'
-    zip 1234
+    first_name FFaker::Name.first_name
+    last_name FFaker::Name.last_name
+    address FFaker::Address.street_address
+    city FFaker::Address.city
+    zip FFaker::AddressUS.zip_code
     country 'US'
-    phone '+380 33 321 12 34'
+    phone '+380 11 132 12 12'
   end
 end
