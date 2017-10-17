@@ -8,7 +8,7 @@ class CheckoutController < ApplicationController
   before_action :initialize_checkout
   before_action :initialize_cart
   before_action :set_order_cart
-  authorize_resource except: :sign_up
+  authorize_resource
 
   def new
     @order.order_items = @cart.order_items
