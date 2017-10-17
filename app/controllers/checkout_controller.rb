@@ -24,28 +24,10 @@ class CheckoutController < ApplicationController
 
   def create
     @order.order_items = @cart.order_items
-
     @checkout.use_billing_address = checkout_params[:use_billing_address] || @order.use_billing_address
-
     set_shipping_and_billing_address
 
-    if params[:back_button]
-      @checkout.previous_step
-      @order.update(aasm_state: @checkout.current_step)
-    elsif @checkout.valid?
-      if params[:place_order_button]
-        update_cart
-        @checkout.current_step = :complete
-        update_order_step
-        update_order
-      elsif params[:back_to_confirm_button]
-        @checkout.current_step = :confirm
-      else
-        update_order
-        @checkout.next_step
-        update_order_step
-      end
-    end
+    CheckoutStepsControlService.new(@checkout, @order, params).control_step
 
     render 'new'
   end
@@ -73,14 +55,6 @@ class CheckoutController < ApplicationController
   end
 
   private
-
-  def update_order
-    @order = UpdateOrderService.new(@checkout, @order).update_order
-  end
-
-  def update_order_step
-    @order.update(aasm_state: @checkout.current_step)
-  end
 
   def initialize_order
     user = current_user
@@ -132,12 +106,6 @@ class CheckoutController < ApplicationController
 
   def initialize_cart
     @checkout.cart = @cart
-  end
-
-  def update_cart
-    order_items_ids = "(#{@cart.order_items.ids.join(',')})"
-    @cart.order_items.where("id IN #{order_items_ids}").update_all(cart_id: nil)
-    @cart.update(discount: nil)
   end
 
   def checkout_params
