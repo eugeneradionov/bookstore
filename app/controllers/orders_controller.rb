@@ -4,30 +4,18 @@ class OrdersController < ApplicationController
   load_resource only: :show
 
   # GET /orders
-  # GET /orders.json
   def index
     @orders = current_user.orders
     @orders = filter_by_status
   end
 
   # GET /orders/1
-  # GET /orders/1.json
   def show
-    if current_user.orders.exists?(id: params[:id])
-      @shipping_a = @order.shipping_address
-      @billing_a = @order.billing_address
-      @delivery = @order.delivery
-      @payment = @order.payment
-      @order_items = @order.order_items
-      render 'show'
-    else
-      redirect_to orders_path
-    end
+    redirect_to orders_path unless current_user.orders.exists?(id: params[:id])
   end
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
     params.fetch(:order, {}).permit(:status)
   end

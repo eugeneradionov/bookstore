@@ -1,63 +1,63 @@
 module OrdersHelper
   def order_shipping_full_name
-    "#{@shipping_a.first_name} #{@shipping_a.last_name}"
+    "#{@order.shipping_address.first_name} #{@order.shipping_address.last_name}"
   end
 
   def order_shipping_address
-    @shipping_a.address
+    @order.shipping_address.address
   end
 
   def order_shipping_city_zip
-    "#{@shipping_a.city} #{@shipping_a.zip}"
+    "#{@order.shipping_address.city} #{@order.shipping_address.zip}"
   end
 
   def order_shipping_country
-    country_name(@shipping_a.country)
+    country_name(@order.shipping_address.country)
   end
 
   def order_shipping_phone
-    "Phone #{@shipping_a.phone}"
+    "Phone #{@order.shipping_address.phone}"
   end
 
   def order_billing_full_name
-    "#{@billing_a.first_name} #{@billing_a.last_name}"
+    "#{@order.billing_address.first_name} #{@order.billing_address.last_name}"
   end
 
   def order_billing_address
-    @billing_a.address
+    @order.billing_address.address
   end
 
   def order_billing_city_zip
-    "#{@billing_a.city} #{@billing_a.zip}"
+    "#{@order.billing_address.city} #{@order.billing_address.zip}"
   end
 
   def order_billing_country
-    country_name(@billing_a.country)
+    country_name(@order.billing_address.country)
   end
 
   def order_billing_phone
-    "Phone #{@billing_a.phone}"
+    "Phone #{@order.billing_address.phone}"
   end
 
   def order_delivery_method
-    @delivery.method
+    @order.delivery.method
   end
 
   def order_delivery_days
-    "#{@delivery.days_from} to #{@delivery.days_to} days"
+    "#{@order.delivery.days_from} to #{@order.delivery.days_to} days"
   end
 
   def order_delivery_price
-    number_to_euro(@delivery.price)
+    number_to_euro(@order.delivery.price)
   end
 
   def order_card_number
-    last_four = @payment.card_number.split(//).last(4).join
+    last_four = @order.payment.card_number.split(//).last(4).join
     "**** **** **** #{last_four}"
   end
 
   def order_mm_yy
-    @payment.mm_yy
+    @order.payment.mm_yy
   end
 
   def order_id(order)
