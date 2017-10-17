@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkout#new'
   post 'checkout', to: 'checkout#create'
   post 'checkouts', to: 'checkout#create'
-  get 'checkout/login', to: 'checkout#login'
-  post 'checkout/sign_up', to: 'checkout#sign_up'
+  get 'checkout/login', to: 'checkout_registration#login'
+  post 'checkout/sign_up', to: 'checkout_registration#sign_up'
 
   get 'settings', to: 'settings#edit'
   post 'settings', to: 'settings#update'

@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 class CheckoutController < ApplicationController
-  include RegistrationLoginCartSetup
 
-  helper_method :resource_name, :resource, :devise_mapping, :resource_class
-
-  before_action :redirect_to_login_unless_user_logged_in, except: [:login, :sign_up]
+  before_action :redirect_to_login_unless_user_logged_in
   before_action :redirect_to_catalog_if_cart_empty, except: :complete
-  before_action :initialize_order, except: [:login, :sign_up]
-  before_action :initialize_checkout, except: [:login, :sign_up]
-  before_action :initialize_cart, except: [:login, :sign_up]
-  before_action :set_order_cart, except: [:login, :sign_up]
+  before_action :initialize_order
+  before_action :initialize_checkout
+  before_action :initialize_cart
+  before_action :set_order_cart
   authorize_resource except: :sign_up
 
   def new
@@ -30,28 +27,6 @@ class CheckoutController < ApplicationController
     CheckoutStepsControlService.new(@checkout, @order, params).control_step
 
     render 'new'
-  end
-
-  def login
-    @user = User.new
-    render 'login'
-  end
-
-  def sign_up
-    password = "#{Devise.friendly_token[0, 8]}Q2"
-    @user = User.new(email: user_params[:email], password: password)
-
-    respond_to do |format|
-      if @user.save
-        sign_in(:user, @user)
-        RegistrationMailer.checkout_registration_email(@user, password).deliver_later
-        current_user.cart = setup_cart
-
-        format.html { redirect_to checkout_path, notice: "Email with your password has been sent to #{@user.email}" }
-      else
-        format.html { render 'login' }
-      end
-    end
   end
 
   private
@@ -119,10 +94,6 @@ class CheckoutController < ApplicationController
                   :card_number, :cvv, :mm_yy, :use_billing_address, :current_step)
   end
 
-  def user_params
-    params.require(:user).permit(:email)
-  end
-
   def set_order_cart
     @order_cart ||= @cart
   end
@@ -133,23 +104,5 @@ class CheckoutController < ApplicationController
 
   def redirect_to_catalog_if_cart_empty
     redirect_to catalog_path if @cart.empty?
-  end
-
-  # == Devise custom form ==
-
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def resource_class
-    User
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
   end
 end

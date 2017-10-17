@@ -14,9 +14,9 @@ RSpec.describe 'Ability', type: :feature do
         expect(page).to have_content('Materials')
       end
 
-      scenario 'Visit Checkout with empty cart' do
+      scenario 'Visit Checkout' do
         visit checkout_path
-        expect(page.current_path).to eq(catalog_path)
+        expect(page.current_path).to eq(checkout_login_path)
       end
 
       scenario 'Visit Checkout with full cart' do
@@ -39,6 +39,11 @@ RSpec.describe 'Ability', type: :feature do
       before(:each) do
         @user = FactoryGirl.create(:user)
         login_as(@user, scope: :user)
+      end
+
+      scenario 'Visit Checkout with empty cart' do
+        visit checkout_path
+        expect(page.current_path).to eq(catalog_path)
       end
 
       scenario 'Can read Order' do
