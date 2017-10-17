@@ -75,9 +75,6 @@ group :development do
   gem 'spring', '~> 2.0', '>= 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'html2haml', '~> 2.2'
-end
-
-group :development do
   gem 'rubycritic', '~> 3.3', require: false
 end
 
