@@ -51,18 +51,19 @@ class CheckoutController < ApplicationController
 
   def set_shipping_address
     user_info = current_user.user_info
-    begin
+    if user_info&.shipping_address_id
       @shipping_a = ShippingAddress.find(user_info.shipping_address_id)
-    rescue NoMethodError
+    else
       @shipping_a = @order.shipping_address || ShippingAddress.new
     end
+
   end
 
   def set_billing_address
     user_info = current_user.user_info
-    begin
+    if user_info&.billing_address_id
       @billing_a = BillingAddress.find(user_info.billing_address_id)
-    rescue NoMethodError
+    else
       @billing_a = @order.billing_address || BillingAddress.new
     end
   end
