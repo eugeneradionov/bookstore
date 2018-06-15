@@ -65,6 +65,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.8'
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
+
 end
 
 group :development do
