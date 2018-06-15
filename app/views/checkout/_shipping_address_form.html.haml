@@ -1,0 +1,63 @@
+- if @checkout.errors[:shipping_first_name].empty?
+  .form-group
+    = f.label :first_name, class: 'control-label input-label'
+    = f.text_field :shipping_first_name, id: 'firstName', class: 'form-control', value: checkout_shipping_first_name, placeholder: 'First Name'
+- else
+  .form-group.has-error
+    = f.label :first_name, class: 'control-label input-label'
+    = f.text_field :shipping_first_name, id: 'firstName', class: 'form-control', value: checkout_shipping_first_name, placeholder: 'First Name'
+    %span.help-block= error_message_for(@checkout, :shipping_first_name)
+
+- if @checkout.errors[:shipping_last_name].empty?
+  .form-group
+    = f.label :last_name, class: 'control-label input-label'
+    = f.text_field :shipping_last_name, id: 'lastName', class: 'form-control', value: checkout_shipping_last_name, placeholder: 'Last Name'
+- else
+  .form-group.has-error
+    = f.label :last_name, class: 'control-label input-label'
+    = f.text_field :shipping_last_name, id: 'lastName', class: 'form-control', value: checkout_shipping_last_name, placeholder: 'Last Name'
+    %span.help-block= error_message_for(@checkout, :shipping_last_name)
+
+- if @checkout.errors[:shipping_address].empty?
+  .form-group
+    = f.label :address, class: 'control-label input-label'
+    = f.text_field :shipping_address, id: 'address', class: 'form-control', value: checkout_shipping_address, placeholder: 'Address'
+- else
+  .form-group.has-error
+    = f.label :address, class: 'control-label input-label'
+    = f.text_field :shipping_address, id: 'address', class: 'form-control', value: checkout_shipping_address, placeholder: 'Address'
+    %span.help-block= error_message_for(@checkout, :shipping_address)
+
+- if @checkout.errors[:shipping_city].empty?
+  .form-group
+    = f.label :city, class: 'control-label input-label'
+    = f.text_field :shipping_city, id: 'city', class: 'form-control', value: checkout_shipping_city, placeholder: 'City'
+- else
+  .form-group.has-error
+    = f.label :city, class: 'control-label input-label'
+    = f.text_field :shipping_city, id: 'city', class: 'form-control', value: checkout_shipping_city, placeholder: 'City'
+    %span.help-block= error_message_for(@checkout, :shipping_city)
+
+- if @checkout.errors[:shipping_zip].empty?
+  .form-group
+  = f.label :zip, class: 'control-label input-label'
+  = f.text_field :shipping_zip, id: 'zip', class: 'form-control', value: checkout_shipping_zip, placeholder: 'Zip'
+- else
+  .form-group.has-error
+    = f.label :zip, class: 'control-label input-label'
+    = f.text_field :shipping_zip, id: 'zip', class: 'form-control', value: checkout_shipping_zip, placeholder: 'Zip'
+    %span.help-block= error_message_for(@checkout, :shipping_zip)
+
+.form-group
+  = f.label :country, class: 'control-label input-label'
+  = f.country_select(:shipping_country, {selected: checkout_shipping_country}, {id: 'country', class: 'form-control', placeholder: 'Select a country'})
+
+- if @checkout.errors[:shipping_phone].empty?
+  .form-group
+  = f.label :phone, class: 'control-label input-label'
+  = f.telephone_field :shipping_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', value: checkout_shipping_phone, placeholder: 'Example +355 66 123 4567'
+- else
+  .form-group.has-error
+    = f.label :phone, class: 'control-label input-label'
+    = f.telephone_field :shipping_phone, pattern: phone_pattern, id: 'phone', class: 'form-control', value: checkout_shipping_phone, placeholder: 'Example +355 66 123 4567'
+    %span.help-block= error_message_for(@checkout, :shipping_phone)

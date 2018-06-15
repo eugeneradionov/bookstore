@@ -1,0 +1,39 @@
+.row.mb-20
+  .col-sm-3
+    %h3.general-subtitle Shipping Address
+    %p.general-address
+      = checkout_shipping_full_name
+      = link_to 'edit', checkout_path(current_step: 'address'), class: 'general-edit'
+      %br
+      = checkout_shipping_address
+      %br
+      = checkout_shipping_city_zip
+      %br
+      = country_name(checkout_shipping_country)
+      %br
+      = "Phone #{checkout_shipping_phone}"
+  .col-sm-3
+    %h3.general-subtitle Billing Address
+    %p.general-address
+      = checkout_billing_full_name
+      = link_to 'edit', checkout_path(current_step: 'address'), class: 'general-edit'
+      %br
+      = checkout_billing_address
+      %br
+      = checkout_billing_city_zip
+      %br
+      = country_name(checkout_billing_country)
+      %br
+      = "Phone #{checkout_billing_phone}"
+  .col-sm-3
+    %h3.general-subtitle Shipments
+    %p.general-address
+      = @checkout.delivery_method.method
+      = link_to 'edit', checkout_path(current_step: 'delivery'), class: 'general-edit'
+  .col-sm-3
+    %h3.general-subtitle Payment Information
+    %p.general-address
+      = card_number(@order.payment)
+      = link_to 'edit', checkout_path(current_step: 'payment'), class: 'general-edit'
+      %br
+      = mm_yy(@order.payment)

@@ -1,0 +1,6 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin Cart
+  - if @cart.empty?
+    = render 'empty_cart'
+  -else
+    = render 'cart'

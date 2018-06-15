@@ -1,0 +1,20 @@
+%main.container
+  %h1.general-title-margin Сatalog
+  .hidden-xs.clearfix
+    .dropdowns.pull-right
+      .dropdown.width-240
+        = render 'dropdown_sort'
+    = render 'categories'
+
+  .dropdowns.mb-25.visible-xs
+    %p.lead.small.mb-10 Filter by category
+    .dropdown
+      = render 'categories_mobile'
+    %p.lead.small.mb-10 Sort by
+    .dropdown
+      = render 'dropdown_sort'
+
+  .mb-120#books-container
+    = render 'books'
+    .text-center#view-more-books-container
+      = link_to_next_page @books, 'View More', id: 'view-more-books', class: 'btn btn-primary', remote: true

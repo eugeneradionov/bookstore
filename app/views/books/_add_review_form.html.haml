@@ -1,0 +1,28 @@
+= form_for @review, html: {class: 'mb-60'}, action: :create do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :book_id, value: params[:id]
+
+  - if @review.errors[:title].empty?
+    .form-group
+      = f.label :title, class: 'control-label input-label'
+      = f.text_field :title, class: 'form-control',  placeholder: 'Review Title'
+  - else
+    .form-group.has-error
+      = f.label :title, class: 'control-label input-label'
+      = f.text_field :title, class: 'form-control',  placeholder: 'Review Title'
+      %span.help-block= error_message_for(@review, :title)
+
+  .form-group
+    = f.label :rating, class: 'control-label input-label'
+    = f.select :rating,[[1,1], [2,2], [3,3], [4,4], [5,5]], class: 'form-control'
+
+  - if @review.errors[:text].empty?
+    .form-group
+      = f.label :text, class: 'control-label input-label'
+      = f.text_area :text, class: 'form-control',  placeholder: 'Write a review here'
+  - else
+    .form-group.has-error
+      = f.label :text, class: 'control-label input-label'
+      = f.text_area :text, class: 'form-control',  placeholder: 'Write a review here'
+      %span.help-block= error_message_for(@review, :text)
+  = f.submit 'Add Review', class: 'btn btn-default'

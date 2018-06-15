@@ -1,0 +1,34 @@
+%table.table.table-hover
+  %tr.no-hover
+    %th.col-pic.pl-0
+      %span.in-grey-600 Product
+    %th.col-title
+    %th.col-price
+      %span.in-grey-600 Price
+    %th.col-quantity
+      %span.in-grey-600 Quantity
+    %th.col-total
+      %span.in-grey-600 SubTotal
+    %th.col-close
+
+  - @cart.order_items.order(:id).each do |order_item|
+    %tr
+      %td
+        .general-img-wrap-table
+          = link_to order_item.book do
+            %img.cart-img-shadow.pull-left{src: order_item.book.cover_url, alt: 'Some cool book'}
+      %td
+        = link_to(order_item.book.title, order_item.book, class: 'title')
+      %td
+        %span.font-16.in-gold-500= number_to_euro(order_item.book.price)
+      %td
+        = form_for order_item, method: :put, remote: true do |f|
+          .input-group
+            = link_to '', order_item_path(order_item, order_item: { quantity: :dec }), method: :put, remote: true, class: 'input-link fa fa-minus line-height-40'
+            = f.number_field :quantity, class: 'form-control quantity-input', id: 'quantity', value: order_item.quantity, min: 1
+            = link_to '', order_item_path(order_item, order_item: { quantity: :inc }), method: :put, remote: true, class: 'input-link fa fa-plus line-height-40'
+      %td
+        %span.font-16.in-gold-500= number_to_euro(order_item.subtotal_price)
+      %td
+        = link_to order_item, method: :delete, class: 'close general-cart-close' do
+          %span{'aria-hidden': 'true'} &times;

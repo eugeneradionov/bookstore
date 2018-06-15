@@ -1,0 +1,45 @@
+%main.container
+  = link_to :back, class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+    Back to results
+  .row
+    .col-sm-6
+      = render 'gallery'
+    .col-sm-6
+      %h1.mt-res-0= @book.title
+      %p.lead.small= book_authors(@book)
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10= number_to_euro(@book.price)
+        = form_for @order_item, remote: true do |f|
+          .col-xs-5.col-md-3
+            .input-group.general-position
+              %a#minus.input-link.fa.fa-minus.line-height-40
+                &nbsp;
+              = hidden_field_tag 'book_id', @book.id
+              = f.text_field :quantity, value: '1', id: 'quantity', class: 'form-control quantity-input'
+              %a#plus.fa.fa-plus.line-height-40.input-link
+                &nbsp;
+          .col-xs-7.col-md-5
+            = f.submit 'Add to Cart', class: 'btn btn-default pull-right general-position'
+      .general-info-wrap.divider-lg
+        %p Description
+        %p.lead.small.line-height-2
+          - if @book.description.length > 470
+            = truncate(@book.description, length: 470)
+            = link_to 'Read More', '#', id: 'read_more', remote: true, onclick: "$(this).parent().html('#{escape_javascript @book.description}')", class: 'in-gold-500 ml-10'
+
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Year of publication
+          %p.lead.small.pull-right= @book.publication_year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Dimensions
+          %p.lead.small.pull-right= book_dimensions
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left Materials
+          %p.lead.small.pull-right Hardcove, glossy paper
+  = render 'reviews'
+  = render 'add_review_form' if user_signed_in?

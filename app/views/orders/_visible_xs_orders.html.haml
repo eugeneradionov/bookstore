@@ -1,0 +1,24 @@
+- @orders.each do |order|
+  .general-cart-item.divider-lg-bottom.pt-0
+    %table.table
+      %tr
+        %td.col-half
+          %span.in-grey-600 Number
+        %td.col-half
+          = link_to order, class: 'general-order-number order-link' do
+            = order_id(order)
+      %tr
+        %td
+          %span.in-grey-600 Completed at
+        %td
+          %span.in-grey-900.font-16.fw-300= order_date(order)
+      %tr
+        %td
+          %span.in-grey-600 Status
+        %td
+          %span.font-16.in-grey-900.fw-300= order.status
+      %tr
+        %td
+          %span.in-grey-600 Total
+        %td
+          %strong.font-16= number_to_euro(order.order_total)

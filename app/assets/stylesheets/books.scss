@@ -1,0 +1,28 @@
+// Place all the styles related to the Books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.input-link {
+  cursor: pointer;
+}
+
+.input-link:hover {
+  text-decoration: none;
+}

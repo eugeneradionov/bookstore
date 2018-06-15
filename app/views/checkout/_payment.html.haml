@@ -1,0 +1,75 @@
+%h1.general-title-margin Checkout
+%ul.steps.list-inline
+  %li.step.done
+    %span.step-number
+      %i.fa.fa-check.step-icon
+    %span.step-text.hidden-xs Address
+  %li.step-divider
+  %li.step.done
+    %span.step-number
+      %i.fa.fa-check.step-icon
+    %span.step-text.hidden-xs Delivery
+  %li.step-divider
+  %li.step.active
+    %span.step-number 3
+    %span.step-text.hidden-xs Payment
+  %li.step-divider
+  %li.step
+    %span.step-number 4
+    %span.step-text.hidden-xs Confirm
+  %li.step-divider
+  %li.step
+    %span.step-number 5
+    %span.step-text.hidden-xs Complete
+%h3.general-subtitle Credit Card
+.max-600.mb-80
+  - if @checkout.errors[:card_number].empty?
+    .form-group
+      = f.label :card_number, class: 'control-label input-label'
+      = f.number_field :card_number, class: 'form-control', id: 'cardNumber', placeholder: 'Card Number'
+  - else
+    .form-group.has-error
+      = f.label :card_number, class: 'control-label input-label'
+      = f.number_field :card_number, class: 'form-control', id: 'cardNumber', placeholder: 'Card Number'
+      %span.help-block= error_message_for(@checkout, :card_number)
+  .row
+    .col-sm-6
+      - if @checkout.errors[:name_on_card].empty?
+        .form-group
+          = f.label :name_on_card, class: 'control-label input-label'
+          = f.text_field :name_on_card, class: 'form-control', id: 'cardNumber', placeholder: 'Name on Card'
+      - else
+        .form-group.has-error
+          = f.label :name_on_card, class: 'control-label input-label'
+          = f.text_field :name_on_card, class: 'form-control', id: 'cardName', placeholder: 'Name on Card'
+          %span.help-block= error_message_for(@checkout, :name_on_card)
+
+    .col-sm-3
+      - if @checkout.errors[:mm_yy].empty?
+        .form-group
+          = f.label :mm_yy, 'MM / YY', class: 'control-label input-label'
+          = f.text_field :mm_yy, class: 'form-control', placeholder: 'MM / YY'
+      - else
+        .form-group.has-error
+          = f.label :mm_yy, 'MM / YY', class: 'control-label input-label'
+          = f.text_field :mm_yy, class: 'form-control', placeholder: 'MM / YY'
+          %span.help-block= error_message_for(@checkout, :mm_yy)
+
+    .col-sm-3
+      - if @checkout.errors[:cvv].empty?
+        .form-group.relative
+          = f.label :cvv, 'CVV', class: 'control-label input-label'
+          = f.text_field :cvv, class: 'form-control', placeholder: 'CVV'
+          #cvv_help.fa.fa-question-circle.general-form-help
+            .tooltip-text
+              3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front
+      - else
+        .form-group.relative.has-error
+          = f.label :cvv, 'CVV', class: 'control-label input-label'
+          = f.text_field :cvv, class: 'form-control', placeholder: 'CVV'
+          #cvv_help.fa.fa-question-circle.general-form-help
+            .tooltip-text
+              3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front
+          %span.help-block= error_message_for(@checkout, :cvv)
+.general-text-align
+  = render 'order_summary'

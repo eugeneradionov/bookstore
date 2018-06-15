@@ -1,0 +1,52 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin Checkout
+  %ul.steps.list-inline
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs Address
+    %li.step-divider
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs Delivery
+    %li.step-divider
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs Payment
+    %li.step-divider
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs Confirm
+    %li.step-divider
+    %li.step.active
+      %span.step-number 5
+      %span.step-text.hidden-xs Complete
+  .text-center.mb-40
+    %h3.general-subtitle Thank You for your Order!
+    %p.fw-300= "An order confirmation has been has been sent to #{@order.user.email}"
+  .row.mb-20
+    .col-sm-6
+      .visible-xs
+        %p.general-order-number.mb-0= "Order ##{order_id(@order)}"
+        %p.general-address.mb-30= order_date(@order)
+      %p.general-address
+        = complete_step_full_name
+        %br
+        = complete_step_address
+        %br
+        = complete_step_city_zip
+        %br
+        = complete_step_country
+        %br
+        = complete_step_phone
+    .col-sm-6.hidden-xs.text-right
+      %p.general-order-number.mb-0= "Order ##{order_id(@order)}"
+      %p.general-address.mb-30= order_date(@order)
+  = render 'confirm_cart'
+  .text-center.general-text-right
+    = render 'order_summary_text_right'
+  .text-center
+    = link_to 'Back to Store', catalog_path, class: 'btn btn-default mb-20'

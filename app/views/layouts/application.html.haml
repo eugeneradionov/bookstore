@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %meta{name: 'viewport', content: 'width=device-width'}
+    %title Bookstore
+    %link{href: 'https://fonts.googleapis.com/css?family=Open+Sans', rel: 'stylesheet'}
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    %header.navbar.navbar-default
+      .container
+        .navbar-header
+          %button.navbar-toggle.pull-left{type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbar'}
+            %span.sr-only
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'Bookstore', root_path, class: 'navbar-brand'
+          = render 'layouts/partials/visible_xs_cart_icon'
+        = render 'layouts/partials/hidden_xs_cart_icon'
+        #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': 'false'}
+          .visible-xs
+            %ul.nav.navbar-nav
+              %li
+                = link_to 'Home', root_path
+              %li
+                %a{type: 'button', 'data-toggle': 'collapse', href: '#menu', 'aria-expanded': 'false', 'aria-controls': 'menu'} Shop
+                %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': 'false'}
+                  %li
+                    = link_to books_path(sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      All
+                  %li
+                    = link_to books_path(category: 'Mobile Development', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Mobile development
+                  %li
+                    = link_to books_path(category: 'Photo', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Photo
+                  %li
+                    = link_to books_path(category: 'Web Design', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Web Design
+                  %li
+                    = link_to books_path(category: 'Web Development', sort: params[:sort], direction: params[:direction]), class: 'collapse-link' do
+                      Web Development
+
+              - if user_signed_in?
+                %li
+                  %a{type: 'button', 'data-toggle': 'collapse', href: '#account', 'aria-expanded': 'false', 'aria-controls': 'account'} My account
+                  %ul#account.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': 'false'}
+                    %li
+                      = link_to 'Settings', settings_path, class: 'collapse-link'
+                    %li
+                      = link_to 'My Orders', orders_path, class: 'collapse-link'
+                %li.divider{role: 'separator'}
+                %li
+                  = link_to 'Log out', logout_path, method: :delete, class: 'collapse-link'
+              - else
+                %li
+                  = link_to 'Log in', login_path, class: 'collapse-link'
+                %li
+                  = link_to 'Sign up', sign_up_path, class: 'collapse-link'
+          .hidden-xs
+            %ul.nav.navbar-nav
+              %li
+                = link_to 'Home', root_path
+              %li.dropdown
+                %a.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'} Shop
+                %ul.dropdown-menu
+                  %li
+                    = link_to books_path(sort: params[:sort], direction: params[:direction]) do
+                      All
+                  %li
+                    = link_to books_path(category: 'Mobile Development', sort: params[:sort], direction: params[:direction]) do
+                      Mobile development
+                  %li
+                    = link_to books_path(category: 'Photo', sort: params[:sort], direction: params[:direction]) do
+                      Photo
+                  %li
+                    = link_to books_path(category: 'Web Design', sort: params[:sort], direction: params[:direction]) do
+                      Web Design
+                  %li
+                    = link_to books_path(category: 'Web Development', sort: params[:sort], direction: params[:direction]) do
+                      Web Development
+
+              - if user_signed_in?
+                %li.dropdown
+                  %a.dropdown-toggle{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'} My account
+                  %ul.dropdown-menu
+                    %li
+                      = link_to 'Settings', settings_path
+                    %li
+                      = link_to 'My Orders', orders_path
+                    %li.divider{role: 'separator'}
+                    %li
+                      = link_to 'Logout', logout_path, method: :delete
+              - else
+                %li
+                  = link_to 'Log in', login_path
+                %li
+                  = link_to 'Sign up', sign_up_path
+
+    = yield
+
+    %footer.navbar-inverse
+      .container
+        .row
+          .col-sm-9
+            %ul.list-inline.general-align.mb-25
+              %li
+                = link_to 'Home', root_path, class: 'nav-link'
+              %li
+                = link_to 'Shop', books_path, class: 'nav-link'
+              %li
+                = link_to 'Orders', orders_path, class: 'nav-link'
+              %li
+                = link_to 'Settings', settings_path, class: 'nav-link'
+          .col-sm-3
+            %p.general-nav-mail support@bookstore.com
+            %p.general-nav-number (555)-555-5555
+            %ul.list-inline.general-align
+              %li
+                %a.nav-link{href: '#'}
+                  %i.fa.fa-facebook{'aria-hidden': 'true'}
+              %li
+                %a.nav-link{href: '#'}
+                  %i.fa.fa-twitter{'aria-hidden': 'true'}
+              %li
+                %a.nav-link{href: '#'}
+                  %i.fa.fa-google-plus{'aria-hidden': 'true'}
+              %li
+                %a.nav-link{href: '#'}
+                  %i.fa.fa-instagram{'aria-hidden': 'true'}
+    %script{src: 'https://use.fontawesome.com/67602d7308.js'}

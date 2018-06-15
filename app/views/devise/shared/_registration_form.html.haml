@@ -1,0 +1,24 @@
+= form_for(resource, html: {class: 'general-form'}, as: resource_name, url: 'sign_up') do |f|
+  = devise_error_messages!
+  .form-group.mb-30
+    = f.label :email, class: 'control-label input-label'
+    - if resource.errors[:email].empty?
+      = f.email_field :email, autofocus: true, id: 'email', class: 'form-control', placeholder: 'Enter Email'
+    - else
+      = f.email_field :email, autofocus: true, id: 'email', class: 'form-control borders-red', placeholder: 'Enter Email'
+      = errors_for(:email)
+
+  .form-group.mb-30
+    = f.label :password, class: 'control-label input-label'
+    - if resource.errors[:password].empty?
+      = f.password_field :password, autocomplete: 'off', id: 'password', class: 'form-control', placeholder: 'Password'
+    - else
+      = f.password_field :password, autocomplete: 'off', id: 'password', class: 'form-control borders-red', placeholder: 'Password'
+      = errors_for(:password)
+
+  .form-group.mb-30
+    = f.label :confirm_password, class: 'control-label input-label'
+    = f.password_field :password_confirmation, autocomplete: 'off', id: 'confirm', class: 'form-control', placeholder: 'Confirm Password'
+
+  .text-center
+    = f.submit 'Sign up', class: 'btn btn-default mb-20'

@@ -1,0 +1,13 @@
+- @books.each do |book|
+  .item
+    .row
+      .col-sm-5
+        .general-img-wrap
+          %img.img-shadow.general-thumbnail-img{src: book.cover_url, alt: 'Some amazing book'}
+      .col-sm-7
+        .mb-60
+          %h1= book.title
+          %p.lead= book_first_sentence(book)
+          %p.lead.small= book_authors(book)
+          .general-align
+            = button_to 'Buy Now', order_items_path(book_id: book), class: 'btn btn-primary', remote: true

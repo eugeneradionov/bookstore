@@ -1,0 +1,10 @@
+<% if params[:page] %>
+  books = "<%= j(render @books) %>"
+  $("#view-more-books-container").before("<%= j(render 'books') %>")
+<% end %>
+
+<% if @books.last_page? %>
+  $("#view-more-books").hide();
+<% else %>
+  $("#view-more-books").attr("href", "<%= books_path(page: (@books.current_page+1)) %>");
+<% end %>

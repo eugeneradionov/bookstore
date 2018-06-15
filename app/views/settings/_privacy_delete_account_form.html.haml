@@ -1,0 +1,11 @@
+.col-sm-12
+  %p.in-gold-500.font-18.mb-25 Remove Account
+  =form_for :user, url: user_registration_path, method: :delete do |f|
+    .general-settings-btn
+      = f.submit 'Please Remove My Account', method: :delete, id: 'delete_account_button', class: 'btn disabled btn-default mb-20', disabled: true
+    .form-group.checkbox.general-settings-checkbox
+      %label#delete_account_checkbox.checkbox-label
+        = f.check_box :confirm, class: 'checkbox-input', hidden: true
+        %span.checkbox-icon
+          %i.fa.fa-check
+        %span.checkbox-text I understand that all data will be lost

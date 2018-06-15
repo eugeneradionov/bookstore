@@ -1,0 +1,12 @@
+.item.active
+  .row
+    .col-sm-5
+      .general-img-wrap
+        %img.img-shadow.general-thumbnail-img{src: @first_book.cover_url, alt: 'Some amazing book'}
+    .col-sm-7
+      .mb-60
+        %h1= @first_book.title
+        %p.lead= book_first_sentence(@first_book)
+        %p.lead.small= book_authors(@first_book)
+        .general-align
+          = button_to 'Buy Now', order_items_path(book_id: @first_book), class: 'btn btn-primary', remote: true

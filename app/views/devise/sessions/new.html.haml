@@ -1,0 +1,13 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title Log In
+    = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
+      %i.fa.fa-facebook-official
+    %p.general-login-text or
+
+  = render 'devise/shared/login_form'
+
+  %p.general-sign-text.text-center
+    Don’t have an Account?
+    - if devise_mapping.registerable? && controller_name != 'registrations'
+      = link_to 'Sign up', new_registration_path(resource_name), class: 'in-gold-500'

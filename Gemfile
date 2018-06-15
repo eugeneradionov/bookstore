@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -7,7 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.2'
+gem 'rails', '= 5.1.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -22,7 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -31,11 +32,23 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
-gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'cancancan', '~> 2.0'
 gem 'devise', '~> 4.3'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'haml', '~> 5.0', '>= 5.0.1'
 gem 'sass', '~> 3.5', '>= 3.5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.2.3'
+gem 'nokogiri', '~> 1.8'
+gem 'country_select', '~> 3.1'
+gem 'rails_admin', '~> 1.2'
+gem 'ffaker', '~> 2.6'
+gem 'wicked', '~> 1.3', '>= 1.3.2'
+gem 'aasm', '~> 4.12', '>= 4.12.2'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws', '~> 1.4', '>= 1.4.1'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,9 +59,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
   gem 'capybara', '~> 2.14', '>= 2.14.4'
+  gem 'transactional_capybara', '~> 0.2.0'
+  gem 'selenium-webdriver', '~> 3.6'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'factory_girl', '~> 4.8'
-  gem 'ffaker', '~> 2.6'
+  gem 'factory_girl_rails', '~> 4.8'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
+
 end
 
 group :development do
@@ -56,8 +73,10 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.0', '>= 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'html2haml', '~> 2.2'
+  gem 'rubycritic', '~> 3.3', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
